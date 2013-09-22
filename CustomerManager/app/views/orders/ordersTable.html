@@ -1,0 +1,43 @@
+﻿<table class="table table-hover table-striped table-condensed table-bordered ordersTable" data-ng-controller="OrderChildController">
+    <thead>
+        <tr>
+            <th data-ng-click="setOrder('product')">Product</th>
+            <th data-ng-click="setOrder('date')">Date</th>
+            <th data-ng-click="setOrder('quantity')">Quantity</th>
+            <th data-ng-click="setOrder('price')">Unit Price</th>
+            <th data-ng-click="setOrder('orderTotal')">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-hide="customer.orders || customer.orders.length > 0" class="error">
+            <td colspan="5">
+                <div class="text-center"><strong>No orders found</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="order in customer.orders | orderBy:orderby:reverse" class="repeat-animation">
+            <td>
+                {{ order.product }}
+            </td>
+            <td>
+                {{ order.date | date:'MM/dd/yyyy' }}
+            </td>
+            <td>
+                {{ order.quantity }}
+            </td>
+            <td>
+                {{ order.price | currency }}
+            </td>
+            <td>
+                {{ order.orderTotal | currency }}
+            </td>
+        </tr>
+        <tr class="info">
+            <td colspan="4">
+                &nbsp;
+            </td>
+            <td>
+                <strong>{{ customer.ordersTotal | currency }}</strong>
+            </td>
+        </tr>
+    </tbody>
+</table>

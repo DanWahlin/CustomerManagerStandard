@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="customersApp">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <title>Customer Manager</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="Content/styles.css" rel="stylesheet" />
+    <link href="Content/animations.css" rel="stylesheet" />
+</head>
+<body data-ng-cloak="">
+
+    <div class="navbar navbar-fixed-top" data-ng-controller="NavbarController">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand " href="#/">
+                    <img src="Content/Images/people.png" alt="logo"> {{ appTitle }}
+                </a>
+                <ul class="nav nav-pills navBarPadding">
+                    <li data-ng-class="{'active':highlight('/customers')}"><a href="#/customers">Customers</a></li>
+                    <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Orders</a></li>
+                    <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-view="" id="ng-view" class="slide-animation"></div>
+
+    <div id="footer">
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner footer">
+                <div class="container">
+                    <footer>
+                        <div class="row">
+                            <div class="span12">
+                                Created by <a href="http://twitter.com/DanWahlin" target="_blank">Dan Wahlin</a>
+                            </div>
+                        </div>
+                   </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-wc-overlay="" data-wc-overlay-delay="300">
+        <br /><img src="/Content/images/spinner.gif" />&nbsp;&nbsp;Loading
+    </div>
+
+    <!-- 3rd party libraries -->
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
+    <script src="/Scripts/angular-animate.js"></script>
+    <script src="/Scripts/angular-ui-bootstrap.js"></script>
+    <script src="/Scripts/tweenMax.min.js"></script>
+
+    <!-- jQuery only needed with Breeze so not loaded before AngularJS in this example-->
+    <!-- If you want jQuery to replace jqlite in AngularJS then load jQuery before angular.js (not needed in this app though) -->
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/q.min.js"></script>
+    <script src="/Scripts/breeze.min.js"></script>
+    <script src="/Scripts/to$q.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="/app/app.js"></script>
+    <script src="/app/animations/listAnimations.js"></script>
+    <script src="/app/directives/wcOverlay.js"></script>
+    <script src="/app/directives/wcUnique.js"></script>
+    <script src="/app/filters/nameCityStateFilter.js"></script>
+    <script src="/app/filters/nameProductFilter.js"></script>
+    <script src="/app/services/config.js"></script>
+    <script src="/app/services/customersBreezeService.js"></script>
+    <script src="/app/services/customersService.js"></script>
+    <script src="/app/services/dataService.js"></script>
+    <script src="/app/services/modalService.js"></script>
+    <script src="/app/services/routeResolver.js"></script>
+    <script src="/app/controllers/customers/customerEditController.js"></script>
+    <script src="/app/controllers/customers/customerOrdersController.js"></script>
+    <script src="/app/controllers/customers/customersController.js"></script>
+    <script src="/app/controllers/orders/orderChildController.js"></script>
+    <script src="/app/controllers/orders/ordersController.js"></script>
+    <script src="/app/controllers/aboutController.js"></script>
+    <script src="/app/controllers/navbarController.js"></script>
+</body>
+</html>
