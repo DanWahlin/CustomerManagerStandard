@@ -55,3 +55,5 @@ Start the Node/Express server:
 * navigate to the CustomerManager/server directory then execute 'node app.js'
 
 View the application at http://localhost:3000
+
+Thanks to [Tony Quinn](https://github.com/tonyq) for contributing the initial Node.js/MongoDB code!
