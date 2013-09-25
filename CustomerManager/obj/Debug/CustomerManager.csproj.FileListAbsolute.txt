@@ -157,6 +157,5 @@ D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\bin\ko\System
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\bin\ru\System.Spatial.resources.dll
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\bin\zh-Hans\System.Spatial.resources.dll
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\bin\zh-Hant\System.Spatial.resources.dll
-D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.csprojResolveAssemblyReference.cache
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.dll
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.pdb
