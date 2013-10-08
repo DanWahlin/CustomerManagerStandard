@@ -1,4 +1,9 @@
-﻿customersManager.customersApp
-    .controller('AboutController', ['$scope', function ($scope) {
+﻿(function () {
 
-}]);
+    var aboutController = function ($scope) {
+
+    };
+
+    customersManager.customersApp.controller('AboutController', ['$scope', aboutController]);
+
+}());

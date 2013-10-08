@@ -1,5 +1,6 @@
-﻿customersManager.customersApp
-    .factory('customersService', ['$http', '$q', function ($http, $q) {
+﻿(function () {
+
+    var customersService = function ($http, $q) {
         var serviceBase = '/api/dataservice/',
             customers = null,
             customersFactory = {};
@@ -16,7 +17,7 @@
             return $http.get(serviceBase + 'states').then(
                 function (results) {
                     return results.data;
-                });                
+                });
         }
 
         customersFactory.checkUniqueValue = function (id, property, value) {
@@ -88,7 +89,7 @@
             var uri = '?$top=' + pageSize + '&$skip=' + (pageIndex * pageSize);
             return uri;
         }
-        
+
 
         function orderTotal(order) {
             return order.quantity * order.price;
@@ -107,4 +108,8 @@
 
         return customersFactory;
 
-}]);
+    };
+
+    customersManager.customersApp.factory('customersService', ['$http', '$q', customersService]);
+
+}());

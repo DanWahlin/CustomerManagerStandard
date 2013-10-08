@@ -1,5 +1,6 @@
-﻿customersManager.customersApp
-    .controller('OrdersController', ['$scope', 'dataService', function ($scope, dataService) {
+﻿(function () {
+
+    var ordersController = function ($scope, dataService) {
         $scope.customers = [];
 
         //paging
@@ -9,14 +10,14 @@
 
         init();
 
-        function init() {
-            getCustomers();
-        }
-
         $scope.pageChanged = function (page) {
             $scope.currentPage = page;
             getCustomers();
         };
+
+        function init() {
+            getCustomers();
+        }
 
         function getCustomers() {
             dataService.getCustomers($scope.currentPage - 1, $scope.pageSize)
@@ -27,4 +28,8 @@
                     alert(error.message);
                 });
         }
-}]);
+    };
+
+    customersManager.customersApp.controller('OrdersController', ['$scope', 'dataService', ordersController]);
+
+}());

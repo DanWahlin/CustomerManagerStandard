@@ -1,7 +1,6 @@
-﻿customersManager.customersApp
-    .service('modalService', ['$q', '$modal',
+﻿(function () {
 
-    function ($q, $modal) {
+    var modalService = function ($q, $modal) {
 
         var modalDefaults = {
             backdrop: true,
@@ -38,10 +37,10 @@
                 tempModalDefaults.controller = function ($scope, $modalInstance) {
                     $scope.modalOptions = tempModalOptions;
                     $scope.modalOptions.ok = function (result) {
-                        $modalInstance.close(result);
+                        $modalInstance.close('ok');
                     };
                     $scope.modalOptions.close = function (result) {
-                        $modalInstance.dismiss('cancel');
+                        $modalInstance.close('cancel');
                     };
                 }
             }
@@ -49,4 +48,8 @@
             return $modal.open(tempModalDefaults).result;
         };
 
-}]);
+    };
+
+    customersManager.customersApp.service('modalService', ['$q', '$modal', modalService]);
+
+}());

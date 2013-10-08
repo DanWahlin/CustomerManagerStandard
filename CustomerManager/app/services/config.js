@@ -1,6 +1,9 @@
-﻿customersManager.customersApp
-    .value('config',
-    {
+﻿(function () {
+
+    var value = {
         useBreeze: false
-    }
-);
+    };
+
+    customersManager.customersApp.value('config', value);
+
+}());

@@ -1,6 +1,6 @@
-﻿customersManager.customersApp
-    .service('dialogService', ['$dialog',
-    function ($dialog) {
+﻿(function () {
+
+    var dialogService = function ($dialog) {
 
         var dialogDefaults = {
             backdrop: true,
@@ -70,4 +70,8 @@
             });
             return msgBox.open();
         };
-}]);
+    };
+
+    customersManager.customersApp.service('dialogService', ['$dialog', dialogService]);
+
+}());

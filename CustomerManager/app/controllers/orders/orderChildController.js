@@ -1,28 +1,33 @@
-﻿customersManager.customersApp
-    .controller('OrderChildController', ['$scope', function ($scope) {
-    $scope.orderby = 'product';
-    $scope.reverse = false;
-    $scope.ordersTotal = 0.00;
+﻿(function() {
 
-    init();
+    var orderChildController = function ($scope) {
+        $scope.orderby = 'product';
+        $scope.reverse = false;
+        $scope.ordersTotal = 0.00;
 
-    function init() {
-        //Calculate grand total
-        //Handled at this level so we don't duplicate it across parent controllers
-        if ($scope.customer && $scope.customer.orders) {
-            var total = 0.00;
-            for (var i = 0; i < $scope.customer.orders.length; i++) {
-                var order = $scope.customer.orders[i];
-                total += order.orderTotal;
+        init();
+
+        $scope.setOrder = function (orderby) {
+            if (orderby === $scope.orderby) {
+                $scope.reverse = !$scope.reverse;
             }
-            $scope.ordersTotal = total;
-        }
-    }
+            $scope.orderby = orderby;
+        };
 
-    $scope.setOrder = function (orderby) {
-        if (orderby === $scope.orderby) {
-            $scope.reverse = !$scope.reverse;
+        function init() {
+            //Calculate grand total
+            //Handled at this level so we don't duplicate it across parent controllers
+            if ($scope.customer && $scope.customer.orders) {
+                var total = 0.00;
+                for (var i = 0; i < $scope.customer.orders.length; i++) {
+                    var order = $scope.customer.orders[i];
+                    total += order.orderTotal;
+                }
+                $scope.ordersTotal = total;
+            }
         }
-        $scope.orderby = orderby;
     };
-}]);
+
+    customersManager.customersApp.controller('OrderChildController', ['$scope', orderChildController]);
+
+}());

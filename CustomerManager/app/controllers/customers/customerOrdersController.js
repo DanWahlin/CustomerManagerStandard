@@ -1,22 +1,28 @@
-﻿customersManager.customersApp
-    .controller('CustomerOrdersController', ['$scope', '$routeParams', 'dataService', function ($scope, $routeParams, dataService) {
-    //Grab customerID off of the route        
-    var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
+﻿(function () {
 
-    $scope.customer = {};
-    $scope.ordersTotal = 0.00;
+    var customerOrdersController = function ($scope, $routeParams, dataService) {
+        //Grab customerID off of the route        
+        var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
 
-    init();
+        $scope.customer = {};
+        $scope.ordersTotal = 0.00;
 
-    function init() {
-        if (customerID > 0) {
-            dataService.getCustomer(customerID)
-            .then(function (customer) {
-                $scope.customer = customer;
-            }, function (error) {
-                alert(error.message);
-            });
+        init();
+
+        function init() {
+            if (customerID > 0) {
+                dataService.getCustomer(customerID)
+                .then(function (customer) {
+                    $scope.customer = customer;
+                }, function (error) {
+                    alert(error.message);
+                });
+            }
         }
-    }
 
-}]);
+    };
+
+    customersManager.customersApp.controller('CustomerOrdersController',
+        ['$scope', '$routeParams', 'dataService', customerOrdersController]);
+
+}());
