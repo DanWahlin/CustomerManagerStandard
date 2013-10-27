@@ -202,6 +202,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="server\views\index.jade" />
     <Content Include="package.json" />
+    <Content Include="ClassDiagram.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

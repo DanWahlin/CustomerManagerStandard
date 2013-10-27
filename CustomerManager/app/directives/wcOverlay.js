@@ -147,12 +147,12 @@
 
     var wcDirectivesApp = angular.module('wc.Directives', []);
 
-    //Empty factory to hook into $httpProvider.interceptors
-    //Directive will hookup request, response, and responseError interceptors
-    wcDirectivesApp.factory('httpInterceptor', httpInterceptor);
+//Empty factory to hook into $httpProvider.interceptors
+//Directive will hookup request, response, and responseError interceptors
+wcDirectivesApp.factory('httpInterceptor', httpInterceptor);
 
-    //Hook httpInterceptor factory into the $httpProvider interceptors so that we can monitor XHR calls
-    wcDirectivesApp.config(['$httpProvider', httpProvider]);
+//Hook httpInterceptor factory into the $httpProvider interceptors so that we can monitor XHR calls
+wcDirectivesApp.config(['$httpProvider', httpProvider]);
 
     //Directive that uses the httpInterceptor factory above to monitor XHR calls
     //When a call is made it displays an overlay and a content area 

@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var modalService = function ($q, $modal) {
+    var modalService = function ($modal) {
 
         var modalDefaults = {
             backdrop: true,
@@ -50,6 +50,6 @@
 
     };
 
-    customersManager.customersApp.service('modalService', ['$q', '$modal', modalService]);
+    customersManager.customersApp.service('modalService', ['$modal', modalService]);
 
 }());

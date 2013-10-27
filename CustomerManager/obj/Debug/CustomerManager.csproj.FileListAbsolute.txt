@@ -214,3 +214,4 @@ C:\Users\wahlind\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager
 C:\Users\wahlind\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.pdb
 C:\Users\wahlind\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.csprojResolveAssemblyReference.cache
 D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\obj\Debug\CustomerManager.csprojResolveAssemblyReference.cache
+D:\Dropbox\Projects\GitHub\CustomerManagerStandard\CustomerManager\bin\CustomerManager.dll.config
