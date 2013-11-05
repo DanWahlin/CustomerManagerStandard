@@ -154,6 +154,7 @@
     <Content Include="Content\images\people.png" />
     <Content Include="Content\images\report.png" />
     <Content Include="Global.asax" />
+    <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="initMongoCustData.js" />
     <Content Include="initMongoSettingsData.js" />
@@ -177,6 +178,12 @@
     <Content Include="server\models\state.js" />
     <Content Include="server\routes\api.js" />
     <Content Include="server\routes\index.js" />
+    <Content Include="test\helpers\serviceFactories.js" />
+    <Content Include="test\karma.conf.js" />
+    <Content Include="test\lib\angular-mocks.js" />
+    <Content Include="test\lib\sinon-1.6.0.js" />
+    <Content Include="test\unit\customersControllerSpec.js" />
+    <Content Include="test\unit\customersServiceSpec.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +217,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
