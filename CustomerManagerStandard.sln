@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AF7DC5
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManager.E2ETests", "CustomerManager.E2ETests\CustomerManager.E2ETests.csproj", "{CEE64AD2-A800-49D8-8A30-06CAFB902397}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{9070F180-9D2C-44CD-86C7-0EFB3918D2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9070F180-9D2C-44CD-86C7-0EFB3918D2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9070F180-9D2C-44CD-86C7-0EFB3918D2F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE64AD2-A800-49D8-8A30-06CAFB902397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE64AD2-A800-49D8-8A30-06CAFB902397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE64AD2-A800-49D8-8A30-06CAFB902397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE64AD2-A800-49D8-8A30-06CAFB902397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
