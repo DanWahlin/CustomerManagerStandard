@@ -57,3 +57,18 @@ Start the Node/Express server:
 View the application at http://localhost:3000
 
 Thanks to [Tony Quinn](https://github.com/tonyq) for contributing the initial Node.js/MongoDB code!
+
+## E2E tests using Protractor:
+
+_E2E tests using Protractor for .NET, and Selenium's WebDriver wrapper for Angular_
+
+Tests are written with [NUnit](http://nunit.org/) but feel free to change it.
+(Tests use `http://localhost:58000/` so make sure IIS Express is running the app)
+
+There are several ways to execute these tests:
+
+* Using NUnit TestAdapter for Visual Studio 2012/2013 from the [NUnitTestAdapter](https://www.nuget.org/packages/NUnitTestAdapter) NuGet package.
+* Using Visual Studio extensions like [ReSharper](http://www.jetbrains.com/resharper/) or [TestDriven.net](http://www.testdriven.net/).
+* Using the command line or GUI provided by the [NUnit.Runners](https://www.nuget.org/packages/NUnit.Runners) NuGet package.
+
+Thanks to [Bruno Baia](https://github.com/bbaia) for the contribution!
