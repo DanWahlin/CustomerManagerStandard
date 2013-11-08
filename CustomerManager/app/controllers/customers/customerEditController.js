@@ -69,7 +69,7 @@
         }
 
         function routeChange(event, newUrl) {
-            //Navigate to newView if the form isn't dirty
+            //Navigate to newUrl if the form isn't dirty
             if (!$scope.editForm.$dirty) return;
 
             var modalOptions = {
