@@ -45,6 +45,7 @@ body.skip-animations * {
   -moz-transition:all linear 0.3s;
   -o-transition:all linear 0.3s;
   transition:all linear 0.3s;
+  display:block!important;
 }
  
 .show-hide-animation.ng-hide-remove {

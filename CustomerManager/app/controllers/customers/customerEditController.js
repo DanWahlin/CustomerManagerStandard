@@ -68,7 +68,7 @@
             onRouteChangeOff = $rootScope.$on('$locationChangeStart', routeChange);
         }
 
-        function routeChange(event, newView) {
+        function routeChange(event, newUrl) {
             //Navigate to newView if the form isn't dirty
             if (!$scope.editForm.$dirty) return;
 
@@ -82,7 +82,7 @@
             modalService.showModal({}, modalOptions).then(function (result) {
                 if (result === 'ok') {
                     onRouteChangeOff(); //Stop listening for location changes
-                    $location.path(newView); //Go to page they're interested in
+                    $location.path(newUrl); //Go to page they're interested in
                 }
             });
 
