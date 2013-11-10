@@ -15,7 +15,6 @@
                     cust.state.name.toLowerCase().indexOf(filterValue) > -1) {
 
                     matches.push(cust);
-
                 }
             }
             return matches;

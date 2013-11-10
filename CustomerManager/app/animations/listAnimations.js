@@ -16,7 +16,7 @@
         };
     };
 
-    var animationApp = angular.module('wc.Animations', [])
+    var animationApp = angular.module('wc.Animations', []);
     animationApp.animation('.card-animation', wcAnimations);
 
 }());

@@ -2,7 +2,6 @@
 
     var customersService = function ($http, $q) {
         var serviceBase = '/api/dataservice/',
-            customers = null,
             customersFactory = {};
 
         customersFactory.getCustomers = function (pageIndex, pageSize) {
@@ -18,7 +17,7 @@
                 function (results) {
                     return results.data;
                 });
-        }
+        };
 
         customersFactory.checkUniqueValue = function (id, property, value) {
             if (!id) id = 0;
@@ -94,7 +93,7 @@
             return uri;
         }
 
-
+        // is this still used???
         function orderTotal(order) {
             return order.quantity * order.price;
         };
@@ -111,7 +110,6 @@
         };
 
         return customersFactory;
-
     };
 
     customersManager.customersApp.factory('customersService', ['$http', '$q', customersService]);

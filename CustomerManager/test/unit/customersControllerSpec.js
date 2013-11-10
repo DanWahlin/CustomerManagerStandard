@@ -59,7 +59,7 @@ describe('customersController Tests', function () {
 
     //Define module under test
     beforeEach(function () {
-        module('customersApp')
+        module('customersApp');
 
         inject(function ($controller, $rootScope, $q) {
             $scope = $rootScope.$new();
@@ -78,8 +78,8 @@ describe('customersController Tests', function () {
                     $scope: $scope,
                     dataService: fakeBreezeCustomersService
                 });
-            }
-        })
+            };
+        });
     });
 
     it('should have 1 customer when using $http factory', function () {

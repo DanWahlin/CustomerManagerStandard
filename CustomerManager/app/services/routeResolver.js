@@ -52,7 +52,7 @@
                 var defer = $q.defer();
                 require(dependencies, function () {
                     defer.resolve();
-                    $rootScope.$apply()
+                    $rootScope.$apply();
                 });
 
                 return defer.promise;
@@ -60,7 +60,7 @@
 
             return {
                 resolve: resolve
-            }
+            };
         }(this.routeConfig);
 
     };

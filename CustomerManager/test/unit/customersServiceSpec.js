@@ -1,6 +1,5 @@
 ﻿describe('customersService Tests', function () {
-    var $scope,
-        httpBackend,
+    var httpBackend,
         serviceUrl = '/api/dataservice/customersSummary?$top=10&$skip=0',
         custs = [{
             "id": 1,
@@ -22,22 +21,6 @@
         inject(function ($httpBackend) {
             httpBackend = $httpBackend;
         });
-
-        //Way to inject dependency into a factory/service
-        //module('customersApp', function ($provide) {
-        //    //Create the mock
-        //    mockSvc = {
-        //        doSomething: function () { }
-        //    };
-        //    spyOn(mockSvc, 'doSomething');
-        //    $provide.value('childSvc', mockSvc);
-        //});
-
-        ////now we inject the service we're testing.
-        //inject(function (yourFactoryOrService) {
-        //    service = yourFactoryOrService;
-        //    //Down in test you can check if mockSvc worked: expect(mockSvc.doSomething).toHaveBeenCalledWith('The Value');
-        //});
     });
 
     //Ensure no expectations were missed (expectGET or expectPOST)
@@ -51,7 +34,7 @@
             var response = {
                 totalRecords: 1,
                 results: custs
-            }
+            };
             //Header normally sent from server and contains the totalRecords
             httpBackend.when('GET', serviceUrl).respond(custs, { 'X-InlineCount': '1' });
 

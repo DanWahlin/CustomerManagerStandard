@@ -6,7 +6,7 @@
             timer,
             onRouteChangeOff;
 
-        $scope.customer;
+        $scope.customer = {};
         $scope.states = [];
         $scope.title = (customerID > 0) ? 'Edit' : 'Add';
         $scope.buttonText = (customerID > 0) ? 'Update' : 'Add';

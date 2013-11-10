@@ -44,7 +44,7 @@
                         dialog.close();
                         customDialogOptions.callback();
                     };
-                }
+                };
             }
 
             var d = $dialog.dialog(tempDialogDefaults);

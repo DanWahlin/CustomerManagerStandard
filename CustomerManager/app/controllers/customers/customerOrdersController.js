@@ -19,7 +19,6 @@
                 });
             }
         }
-
     };
 
     customersManager.customersApp.controller('CustomerOrdersController',
