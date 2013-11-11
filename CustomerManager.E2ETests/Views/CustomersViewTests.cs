@@ -167,6 +167,7 @@ $httpBackend.whenGET('\/api/dataservice/customersSummary?$top=10&$skip=0').respo
                 {
                     // Close card
                     customer.FindElement(By.ClassName("cardClose")).Click();
+
                     // Popup to confirm
                     ngDriver.FindElement(By.XPath("//button[contains(.,'Delete Customer')]")).Click();
                     break;
