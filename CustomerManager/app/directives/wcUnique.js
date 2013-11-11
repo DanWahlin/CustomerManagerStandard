@@ -23,7 +23,7 @@
                         });
                 });
             }
-        }
+        };
     };
 
     customersManager.customersApp.directive('wcUnique', ['dataService', wcUniqueDirective]);

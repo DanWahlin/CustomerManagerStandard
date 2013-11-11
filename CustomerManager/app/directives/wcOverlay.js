@@ -16,7 +16,6 @@
                 var overlayContainer = null,
                     timerPromise = null,
                     timerPromiseHide = null,
-                    inSession = false,
                     queue = [];
 
                 init();
@@ -109,7 +108,7 @@
                     var contentHeight = parseInt(getComputedStyle(content, 'height').replace('px', ''));
 
                     content.style.top = h / 2 - contentHeight / 2 + 'px';
-                    content.style.left = w / 2 - contentWidth / 2 + 'px'
+                    content.style.left = w / 2 - contentWidth / 2 + 'px';
 
                     overlayContainer.style.display = 'block';
                 }
@@ -131,10 +130,10 @@
 
                     return function (element, style) {
                         return func(element, null)[style];
-                    }
+                    };
                 }();
             }
-        }
+        };
     },
 
     httpProvider = function ($httpProvider) {
@@ -142,7 +141,7 @@
     },
 
     httpInterceptor = function () {
-        return {}
+        return {};
     };
 
     var wcDirectivesApp = angular.module('wc.Directives', []);

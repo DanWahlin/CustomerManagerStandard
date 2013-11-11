@@ -42,12 +42,11 @@
                     $scope.modalOptions.close = function (result) {
                         $modalInstance.close('cancel');
                     };
-                }
+                };
             }
 
             return $modal.open(tempModalDefaults).result;
         };
-
     };
 
     customersManager.customersApp.service('modalService', ['$modal', modalService]);

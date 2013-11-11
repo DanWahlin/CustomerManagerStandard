@@ -50,12 +50,12 @@
             return getMetadata().to$q(function () {
                 return entityManager.createEntity('Customer', { firstName: '', lastName: '' });
             });
-        }
+        };
 
         customersFactory.deleteCustomer = function (id) {
             if (!id) {
                 alert('ID was null - cannot delete');
-                return;
+                return null;
             }
             var customer = entityManager.getEntityByKey('Customer', id);
 
@@ -129,25 +129,23 @@
                 return {
                     totalRecords: parseInt(data.XHR.getResponseHeader('X-InlineCount')),
                     results: data.results
-                }
+                };
             }, function (error) {
                 alert('Error ' + error.message);
             });
         }
 
+        var OrderCtor = function() {
 
-
-        var OrderCtor = function () {
-
-        }
+        };
 
         function orderInit(order) {
             order.orderTotal = order.quantity * order.price;
         }
 
-        var CustomerCtor = function () {
+        var CustomerCtor = function() {
 
-        }
+        };
 
         function customerInit(customer) {
             customer.ordersTotal = ordersTotal(customer);
@@ -168,7 +166,6 @@
         entityManager.metadataStore.registerEntityTypeCtor('Customer', CustomerCtor, customerInit);
 
         return customersFactory;
-
     };
 
     customersManager.customersApp.factory('customersBreezeService', customersBreezeService);

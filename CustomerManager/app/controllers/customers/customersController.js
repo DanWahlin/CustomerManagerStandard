@@ -51,7 +51,7 @@
         $scope.ViewEnum = {
             Card: 0,
             List: 1
-        }
+        };
 
         $scope.changeView = function (view) {
             switch (view) {
@@ -62,11 +62,11 @@
                     $scope.listViewEnabled = true;
                     break;
             }
-        }
+        };
 
         $scope.navigate = function (url) {
             $location.path(url);
-        }
+        };
 
         $scope.setOrder = function (orderby) {
             if (orderby === $scope.orderby) {
@@ -112,8 +112,8 @@
                     return cust;
                 }
             }
+            return null;
         }
-
     };
 
     customersManager.customersApp.controller('CustomersController',

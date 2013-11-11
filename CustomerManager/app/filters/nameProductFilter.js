@@ -9,8 +9,8 @@
                         return true;
                     }
                 }
-                return false;
             }
+            return false;
         }
 
         return function (customers, filterValue) {
@@ -25,7 +25,6 @@
                     matchesProduct(cust, filterValue)) {
 
                     matches.push(cust);
-
                 }
             }
             return matches;
