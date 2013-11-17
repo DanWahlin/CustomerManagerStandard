@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IndexTests.cs" />
+    <Compile Include="PageObjects\CustomerOrdersPage.cs" />
+    <Compile Include="PageObjects\CustomersPage.cs" />
     <Compile Include="Support\NgMockE2EModule.cs" />
     <Compile Include="Views\CustomersViewTests.cs" />
   </ItemGroup>
