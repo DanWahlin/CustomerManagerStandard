@@ -62,7 +62,9 @@ Thanks to [Tony Quinn](https://github.com/tonyq) for contributing the initial No
 
 _E2E tests using Protractor for .NET, and Selenium's WebDriver wrapper for Angular_
 
-Tests are written with [NUnit](http://nunit.org/) but feel free to change it.
+Build `CustomerManager.E2ETests` project to restore NuGet packages.
+
+Tests are written with [NUnit](http://nunit.org/) using the _Page Object_ [[1]](https://code.google.com/p/selenium/wiki/PageObjects)[[2]](http://martinfowler.com/bliki/PageObject.html) pattern to make your tests more readable.
 (Tests use `http://localhost:58000/` so make sure IIS Express is running the app)
 
 There are several ways to execute these tests:
