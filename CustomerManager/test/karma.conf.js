@@ -7,6 +7,7 @@ module.exports = function (config) {
             'Scripts/angular.js',
             'Scripts/angular-*.js',
             'Scripts/q.min.js',
+            'Scripts/jquery.min.js',
             'Scripts/breeze.min.js',
             'Scripts/to$q.js',
             'test/lib/*.js',

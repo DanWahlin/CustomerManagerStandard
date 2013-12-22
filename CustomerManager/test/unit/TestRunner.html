@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <link data-require="jasmine@1.3.1" data-semver="1.3.1" rel="stylesheet" href="//cdn.jsdelivr.net/jasmine/1.3.1/jasmine.css" />
+    <script data-require="jasmine@1.3.1" data-semver="1.3.1" src="//cdn.jsdelivr.net/jasmine/1.3.1/jasmine.js"></script>
+    <script data-require="jasmine@1.3.1" data-semver="1.3.1" src="//cdn.jsdelivr.net/jasmine/1.3.1/jasmine-html.js"></script>
+    
+    <!-- 3rd party libraries -->
+    <script src="../../Scripts/angular.js"></script>
+    <script src="../../Scripts/angular-route.js"></script>
+    <script src="../../Scripts/angular-animate.js"></script>
+    <script src="../../Scripts/angular-ui-bootstrap.js"></script>
+    <script src="../../Scripts/tweenMax.min.js"></script>
+
+    <!-- jQuery only needed with Breeze so not loaded before AngularJS in this example-->
+    <!-- If you want jQuery to replace jqlite in AngularJS then load jQuery before angular.js (not needed in this app though) -->
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script src="../../Scripts/q.min.js"></script>
+    <script src="../../Scripts/breeze.min.js"></script>
+    <script src="../../Scripts/to$q.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="../../app/app.js"></script>
+    <script src="../../app/animations/listAnimations.js"></script>
+    <script src="../../app/directives/wcOverlay.js"></script>
+    <script src="../../app/directives/wcUnique.js"></script>
+    <script src="../../app/filters/nameCityStateFilter.js"></script>
+    <script src="../../app/filters/nameProductFilter.js"></script>
+    <script src="../../app/services/config.js"></script>
+    <script src="../../app/services/customersBreezeService.js"></script>
+    <script src="../../app/services/customersService.js"></script>
+    <script src="../../app/services/dataService.js"></script>
+    <script src="../../app/services/modalService.js"></script>
+    <script src="../../app/services/routeResolver.js"></script>
+    <script src="../../app/controllers/customers/customerEditController.js"></script>
+    <script src="../../app/controllers/customers/customerOrdersController.js"></script>
+    <script src="../../app/controllers/customers/customersController.js"></script>
+    <script src="../../app/controllers/orders/orderChildController.js"></script>
+    <script src="../../app/controllers/orders/ordersController.js"></script>
+    <script src="../../app/controllers/aboutController.js"></script>
+    <script src="../../app/controllers/navbarController.js"></script>
+
+    <script src="wcUniqueSpec.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+        jasmine.getEnv().execute();
+    </script>
+</body>
+</html>
