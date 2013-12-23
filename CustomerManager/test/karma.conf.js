@@ -4,10 +4,10 @@ module.exports = function (config) {
         port: 9876,
         frameworks: ['jasmine'],
         files: [
+            'Scripts/jquery.min.js',
             'Scripts/angular.js',
             'Scripts/angular-*.js',
             'Scripts/q.min.js',
-            'Scripts/jquery.min.js',
             'Scripts/breeze.min.js',
             'Scripts/to$q.js',
             'test/lib/*.js',
