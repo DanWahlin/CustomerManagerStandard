@@ -1,5 +1,5 @@
 ﻿describe('wcUnique directive specs', function () {
-    var scope, modelCtrl, modelValue, customerSvcMock, form, element, input;
+    var scope, modelCtrl, modelValue, customerSvcMock, form, element, input, compiledForm;
 
     function setEmailId(value) {
         scope.customer.email = value;
@@ -15,7 +15,7 @@
             element = angular.element('<form name="editForm"></form>');
             element.append(input);
             scope.customer = {};
-            $compile(element)(scope);
+            compiledForm = $compile(element)(scope);
             scope.$digest();
 
             modelCtrl = scope.editForm.email;
@@ -39,8 +39,8 @@
 
     it('Should call checkUniqueValue when value is entered in the input field', function () {
         setEmailId("abc@def.com");
-        input[0].focus();
-        input[0].blur();
+        compiledForm.find('input').focus();
+        compiledForm.find('input').blur();
         expect(customerSvcMock.checkUniqueValue).toHaveBeenCalled();
         expect(form.email.$valid).toBe(false);
     });
