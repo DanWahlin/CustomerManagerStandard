@@ -185,7 +185,6 @@
     <Content Include="test\unit\customersControllerSpec.js" />
     <Content Include="test\unit\customersServiceSpec.js" />
     <Content Include="test\unit\dataServiceSpec.js" />
-    <Content Include="test\unit\TestRunner.html" />
     <Content Include="test\unit\wcUniqueSpec.js" />
     <Content Include="Web.config" />
   </ItemGroup>

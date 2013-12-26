@@ -9,7 +9,7 @@
         module('customersApp')
     });
     beforeEach(function () {
-        inject(function ($compile, $rootScope, $q,$sniffer, customersService) {
+        inject(function ($compile, $rootScope, $q, customersService) {
             scope = $rootScope.$new();
             input = angular.element('<input type="text" name="email" data-ng-model="customer.email" data-wc-unique="{key: customer.id, property: \'email\'}" />');
             element = angular.element('<form name="editForm"></form>');
@@ -41,7 +41,7 @@
 
             changeInputValueTo = function (el, value) {
                 el.val(value);
-                el.trigger($sniffer.hasEvent('blur') ? 'blur' : 'change');
+                el.triggerHandler('blur');
                 $rootScope.$digest();
             };
         });
