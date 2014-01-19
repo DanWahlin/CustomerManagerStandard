@@ -43,6 +43,8 @@
                         $modalInstance.close('cancel');
                     };
                 };
+
+                tempModalDefaults.controller.$inject = ['$scope', '$modalInstance'];
             }
 
             return $modal.open(tempModalDefaults).result;
