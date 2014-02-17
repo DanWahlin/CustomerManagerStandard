@@ -3,7 +3,7 @@
 
 If you’re new to AngularJS check out my [AngularJS in 60-ish Minutes](http://weblogs.asp.net/dwahlin/archive/2013/04/12/video-tutorial-angularjs-fundamentals-in-60-ish-minutes.aspx) video tutorial or download the [free eBook](http://weblogs.asp.net/dwahlin/archive/2013/07/30/angularjs-in-60-ish-minutes-the-ebook.aspx). Also check out [The AngularJS Magazine](http://flip.it/bdyUX) for up-to-date information on using AngularJS to build Single Page Applications (SPAs).
 
-![Customer Management App](https://raw.github.com/DanWahlin/CustomerManager/master/CustomerManager/Content/images/customerApp.png)
+![Customer Management App](https://raw2.github.com/DanWahlin/CustomerManagerStandard/master/CustomerManager/Content/images/customerApp.png)
 
 This is the standard Customer Manager application. To view a version of the application that has custom routing visit [https://github.com/DanWahlin/CustomerManager](https://github.com/DanWahlin/CustomerManager).
 This application demonstrates:
@@ -21,7 +21,7 @@ The factories can be switched by changing the app/services/config useBreeze sett
 
 The AngularJS portion of the app is structured using the following folders:
 
-![Customer Management App Structure](https://raw.github.com/DanWahlin/CustomerManager/master/CustomerManager/Content/images/appFolders.png)
+![Customer Management App Structure](https://raw2.github.com/DanWahlin/CustomerManagerStandard/master/CustomerManager/Content/images/appFolders.png)
 
 ## Requirements:
 
