@@ -1,15 +1,15 @@
 ﻿(function () {
 
-    var customersController = function ($rootScope, $scope, $location, $routeParams, $timeout, config, dataService, modalService) {
+    var CustomerEditController = function ($rootScope, $scope, $location, $routeParams, $timeout, config, dataService, modalService) {
 
-        var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0,
+        var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0,
             timer,
             onRouteChangeOff;
 
         $scope.customer = {};
         $scope.states = [];
-        $scope.title = (customerID > 0) ? 'Edit' : 'Add';
-        $scope.buttonText = (customerID > 0) ? 'Update' : 'Add';
+        $scope.title = (customerId > 0) ? 'Edit' : 'Add';
+        $scope.buttonText = (customerId > 0) ? 'Update' : 'Add';
         $scope.updateStatus = false;
         $scope.errorMessage = '';
 
@@ -50,8 +50,8 @@
         };
 
         function init() {
-            if (customerID > 0) {
-                dataService.getCustomer(customerID).then(function (customer) {
+            if (customerId > 0) {
+                dataService.getCustomer(customerId).then(function (customer) {
                     $scope.customer = customer;
                 }, processError);
             } else {
@@ -120,7 +120,9 @@
         }
     };
 
-    customersManager.customersApp.controller('CustomerEditController',
-       ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'config', 'dataService', 'modalService', customersController]);
+    CustomerEditController.$inject = ['$rootScope', '$scope', '$location', '$routeParams',
+                                      '$timeout', 'config', 'dataService', 'modalService'];
+
+    angular.module('customersApp').controller('CustomerEditController', CustomerEditController);
 
 }());

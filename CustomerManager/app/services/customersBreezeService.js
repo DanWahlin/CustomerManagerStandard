@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var customersBreezeService = function () {
+    var customersBreezeService = function ($q) {
 
         var customersFactory = {};
         var EntityQuery = breeze.EntityQuery;
@@ -43,11 +43,11 @@
         };
 
         customersFactory.insertCustomer = function (customer) {
-            return entityManager.saveChanges().to$q();
+            return entityManager.saveChanges();
         };
 
         customersFactory.newCustomer = function () {
-            return getMetadata().to$q(function () {
+            return getMetadata().then(function () {
                 return entityManager.createEntity('Customer', { firstName: '', lastName: '' });
             });
         };
@@ -78,15 +78,15 @@
                 customer = entityManager.createEntity('Customer', { id: id, gender: 'Male' }, breeze.EntityState.Deleted);
             }
 
-            return entityManager.saveChanges().to$q();
+            return entityManager.saveChanges();
         };
 
         customersFactory.updateCustomer = function (customer) {
-            return entityManager.saveChanges().to$q();
+            return entityManager.saveChanges();
         };
 
         function executeQuery(query, takeFirst) {
-            return query.using(entityManager).execute().to$q(querySuccess, queryError);
+            return query.using(entityManager).execute().then(querySuccess, queryError);
 
             function querySuccess(data, status, headers) {
                 return takeFirst ? data.results[0] : data.results;
@@ -108,7 +108,7 @@
         function getMetadata() {
             var store = entityManager.metadataStore;
             if (store.hasMetadataFor(serviceName)) { //Have metadata
-                return Q(true);
+                return $q.when(true);
             }
             else { //Get metadata
                 return store.fetchMetadata(serviceName);
@@ -118,16 +118,19 @@
         function getPagedResource(entityName, expand, pageIndex, pageSize) {
             var query = EntityQuery
             .from(entityName)
-            .expand(expand)
             .skip(pageIndex * pageSize)
             .take(pageSize)
             .inlineCount(true);
 
+            if (expand && expand != '') {
+                query = query.expand(expand);
+            }
+
             //Not calling the re-useable executeQuery() function here since we need to get to more details
             //and return a custom object
-            return query.using(entityManager).execute().to$q(function (data) {
+            return query.using(entityManager).execute().then(function (data) {
                 return {
-                    totalRecords: parseInt(data.XHR.getResponseHeader('X-InlineCount')),
+                    totalRecords: parseInt(data.inlineCount),
                     results: data.results
                 };
             }, function (error) {
@@ -168,6 +171,9 @@
         return customersFactory;
     };
 
-    customersManager.customersApp.factory('customersBreezeService', customersBreezeService);
+    customersBreezeService.$inject = ['$q'];
+
+    angular.module('customersApp')
+        .factory('customersBreezeService', customersBreezeService);
 
 }());

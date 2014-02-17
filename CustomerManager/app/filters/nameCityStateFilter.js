@@ -21,6 +21,6 @@
         };
     };
 
-    customersManager.customersApp.filter('nameCityStateFilter', nameCityStateFilter);
+    angular.module('customersApp').filter('nameCityStateFilter', nameCityStateFilter);
 
 }());

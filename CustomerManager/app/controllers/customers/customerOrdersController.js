@@ -1,8 +1,8 @@
 ﻿(function () {
 
-    var customerOrdersController = function ($scope, $routeParams, dataService) {
-        //Grab customerID off of the route        
-        var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
+    var CustomerOrdersController = function ($scope, $routeParams, dataService) {
+        //Grab customerId off of the route        
+        var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0;
 
         $scope.customer = {};
         $scope.ordersTotal = 0.00;
@@ -10,8 +10,8 @@
         init();
 
         function init() {
-            if (customerID > 0) {
-                dataService.getCustomer(customerID)
+            if (customerId > 0) {
+                dataService.getCustomer(customerId)
                 .then(function (customer) {
                     $scope.customer = customer;
                 }, function (error) {
@@ -21,7 +21,8 @@
         }
     };
 
-    customersManager.customersApp.controller('CustomerOrdersController',
-        ['$scope', '$routeParams', 'dataService', customerOrdersController]);
+    CustomerOrdersController.$inject = ['$scope', '$routeParams', 'dataService'];
+
+    angular.module('customersApp').controller('CustomerOrdersController', CustomerOrdersController);
 
 }());

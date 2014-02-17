@@ -4,7 +4,7 @@
         return (config.useBreeze) ? customersBreezeService : customersService;
     };
 
-    customersManager.customersApp.factory('dataService',
+    angular.module('customersApp').factory('dataService',
         ['config', 'customersService', 'customersBreezeService', dataService]);
 
 }());

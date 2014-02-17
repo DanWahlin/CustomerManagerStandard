@@ -4,20 +4,19 @@ module.exports = function (config) {
         port: 9876,
         frameworks: ['jasmine'],
         files: [
-            'Scripts/angular.js',
-            'Scripts/angular-*.js',
-            'Scripts/q.min.js',
-            'Scripts/breeze.min.js',
-            'Scripts/to$q.js',
+            //Library scripts
+            'test/lib/angular.js',  //Ensure Angular is loaded first
             'test/lib/*.js',
-            'test/helpers/*.js',
+            'Scripts/**/*.js',
 
             //App and test scripts
+            'test/helpers/*.js',
+            'app/app.js',           //Ensure main startup script is loaded first
             'app/**/*.js',
-            'test/**/*Spec.js'
+            'test/unit/*.js'
         ],
         autoWatch: true,
         browsers: ['Chrome'],
         reporters: ['progress']
-    })
+    });
 };

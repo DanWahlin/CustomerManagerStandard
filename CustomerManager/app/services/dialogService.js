@@ -72,6 +72,6 @@
         };
     };
 
-    customersManager.customersApp.service('dialogService', ['$dialog', dialogService]);
+    angular.module('customersApp').service('dialogService', ['$dialog', dialogService]);
 
 }());

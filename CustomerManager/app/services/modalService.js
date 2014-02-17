@@ -43,12 +43,14 @@
                         $modalInstance.close('cancel');
                     };
                 };
+
+                tempModalDefaults.controller.$inject = ['$scope', '$modalInstance'];
             }
 
             return $modal.open(tempModalDefaults).result;
         };
     };
 
-    customersManager.customersApp.service('modalService', ['$modal', modalService]);
+    angular.module('customersApp').service('modalService', ['$modal', modalService]);
 
 }());

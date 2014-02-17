@@ -1,25 +1,23 @@
-﻿var customersManager = {};
-customersManager.customersApp = {};
+﻿(function () {
 
-(function () {
+    var app = angular.module('customersApp',
+        ['ngRoute', 'ngAnimate', 'wc.Directives', 'ui.bootstrap', 'breeze.angular.q']);
 
-    customersManager.customersApp = angular.module('customersApp',
-        ['ngRoute', 'ngAnimate', 'routeResolverServices', 'wc.Directives', 'wc.Animations', 'ui.bootstrap']);
-
-    customersManager.customersApp.config(['$routeProvider', function ($routeProvider) {
+    app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
             .when('/customers', {
                 controller: 'CustomersController',
                 templateUrl: '/app/views/customers/customers.html'
             })
-            .when('/customerorders/:customerID', {
+            .when('/customerorders/:customerId', {
                 controller: 'CustomerOrdersController',
                 templateUrl: '/app/views/customers/customerOrders.html'
             })
-            .when('/customeredit/:customerID', {
+            .when('/customeredit/:customerId', {
                 controller: 'CustomerEditController',
-                templateUrl: '/app/views/customers/customerEdit.html'
+                templateUrl: '/app/views/customers/customerEdit.html',
+                secure: true //This route requires an authenticated user
             })
             .when('/orders', {
                 controller: 'OrdersController',
@@ -29,14 +27,28 @@ customersManager.customersApp = {};
                 controller: 'AboutController',
                 templateUrl: '/app/views/about.html'
             })
+            .when('/login/:redirect*', {
+                controller: 'LoginController',
+                templateUrl: '/app/views/login.html'
+            })
             .otherwise({ redirectTo: '/customers' });
 
     }]);
 
-    //Only needed for Breeze. Maps Q (used by default in Breeze) to Angular's $q to avoid having to call scope.$apply() 
-    customersManager.customersApp.run(['$q', '$rootScope',
-        function ($q, $rootScope) {
-            breeze.core.extendQ($rootScope, $q);
-        }]);
+    app.run(['$q', 'use$q', '$rootScope', '$location', 'authService',
+        function ($q, use$q, $rootScope, $location, authService) {
 
+            use$q($q); //for Breeze.js so that it uses $q instead of Q
+            
+            //Client-side security. Server-side framework MUST add it's 
+            //own security as well since client-based security is easily hacked
+            $rootScope.$on("$routeChangeStart", function (event, next, current) {
+                if (next && next.$$route && next.$$route.secure) {
+                    if (!authService.user.isAuthenticated) {
+                        $location.path(authService.loginPath + $location.$$path);
+                    }
+                }
+            });
+
+        }]);
 }());

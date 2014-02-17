@@ -1,6 +1,6 @@
 ﻿/**
- * @license AngularJS v1.2.0
- * (c) 2010-2012 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.2.13
+ * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function (window, angular, undefined) {
@@ -15,6 +15,9 @@
      *
      * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
      *
+     * ## Example
+     * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+     * 
      * {@installModule route}
      *
      * <div doc-module-components="ngRoute"></div>
@@ -30,8 +33,12 @@
      *
      * @description
      *
-     * Used for configuring routes. See {@link ngRoute.$route $route} for an example.
+     * Used for configuring routes.
+     * 
+     * ## Example
+     * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
      *
+     * ## Dependencies
      * Requires the {@link ngRoute `ngRoute`} module to be installed.
      */
     function $RouteProvider() {
@@ -51,13 +58,13 @@
          *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
          *    route definition.
          *
-         *      * `path` can contain named groups starting with a colon (`:name`). All characters up
+         *      * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
          *        to the next slash are matched and stored in `$routeParams` under the given `name`
          *        when the route matches.
-         *      * `path` can contain named groups starting with a colon and ending with a star (`:name*`).
-         *        All characters are eagerly stored in `$routeParams` under the given `name`
+         *      * `path` can contain named groups starting with a colon and ending with a star:
+         *        e.g.`:name*`. All characters are eagerly stored in `$routeParams` under the given `name`
          *        when the route matches.
-         *      * `path` can contain optional named groups with a question mark (`:name?`).
+         *      * `path` can contain optional named groups with a question mark: e.g.`:name?`.
          *
          *    For example, routes like `/color/:color/largecode/:largecode*\/edit` will match
          *    `/color/brown/largecode/code/with/slashs/edit` and extract:
@@ -184,7 +191,7 @@
 
             path = path
               .replace(/([().])/g, '\\$1')
-              .replace(/(\/)?:(\w+)([\?|\*])?/g, function (_, slash, key, option) {
+              .replace(/(\/)?:(\w+)([\?\*])?/g, function (_, slash, key, option) {
                   var optional = option === '?' ? option : null;
                   var star = option === '*' ? option : null;
                   keys.push({ name: key, optional: !!optional });
@@ -344,17 +351,17 @@
                      }
                    </file>
             
-                   <file name="scenario.js">
+                   <file name="protractorTest.js">
                      it('should load and compile correct template', function() {
-                       element('a:contains("Moby: Ch1")').click();
-                       var content = element('.doc-example-live [ng-view]').text();
+                       element(by.linkText('Moby: Ch1')).click();
+                       var content = element(by.css('.doc-example-live [ng-view]')).getText();
                        expect(content).toMatch(/controller\: ChapterCntl/);
                        expect(content).toMatch(/Book Id\: Moby/);
                        expect(content).toMatch(/Chapter Id\: 1/);
             
-                       element('a:contains("Scarlet")').click();
-                       sleep(2); // promises are not part of scenario waiting
-                       content = element('.doc-example-live [ng-view]').text();
+                       element(by.partialLinkText('Scarlet')).click();
+            
+                       content = element(by.css('.doc-example-live [ng-view]')).getText();
                        expect(content).toMatch(/controller\: BookCntl/);
                        expect(content).toMatch(/Book Id\: Scarlet/);
                      });
@@ -369,7 +376,7 @@
                  * @eventType broadcast on root scope
                  * @description
                  * Broadcasted before a route change. At this  point the route services starts
-                 * resolving all of the dependencies needed for the route change to occurs.
+                 * resolving all of the dependencies needed for the route change to occur.
                  * Typically this involves fetching the view template as well as any dependencies
                  * defined in `resolve` route property. Once  all of the dependencies are resolved
                  * `$routeChangeSuccess` is fired.
@@ -639,6 +646,8 @@
     }
 
     ngRouteModule.directive('ngView', ngViewFactory);
+    ngRouteModule.directive('ngView', ngViewFillContentFactory);
+
 
     /**
      * @ngdoc directive
@@ -662,6 +671,15 @@
      *
      * @scope
      * @priority 400
+     * @param {string=} onload Expression to evaluate whenever the view updates.
+     *
+     * @param {string=} autoscroll Whether `ngView` should call {@link ng.$anchorScroll
+     *                  $anchorScroll} to scroll the viewport after the view is updated.
+     *
+     *                  - If the attribute is not set, disable scrolling.
+     *                  - If the attribute is set without value, enable scrolling.
+     *                  - Otherwise enable scrolling only if the `autoscroll` attribute value evaluated
+     *                    as an expression yields a truthy value.
      * @example
         <example module="ngViewExample" deps="angular-route.js" animations="true">
           <file name="index.html">
@@ -778,16 +796,17 @@
             }
           </file>
     
-          <file name="scenario.js">
+          <file name="protractorTest.js">
             it('should load and compile correct template', function() {
-              element('a:contains("Moby: Ch1")').click();
-              var content = element('.doc-example-live [ng-view]').text();
+              element(by.linkText('Moby: Ch1')).click();
+              var content = element(by.css('.doc-example-live [ng-view]')).getText();
               expect(content).toMatch(/controller\: ChapterCntl/);
               expect(content).toMatch(/Book Id\: Moby/);
               expect(content).toMatch(/Chapter Id\: 1/);
     
-              element('a:contains("Scarlet")').click();
-              content = element('.doc-example-live [ng-view]').text();
+              element(by.partialLinkText('Scarlet')).click();
+    
+              content = element(by.css('.doc-example-live [ng-view]')).getText();
               expect(content).toMatch(/controller\: BookCntl/);
               expect(content).toMatch(/Book Id\: Scarlet/);
             });
@@ -804,76 +823,98 @@
      * @description
      * Emitted every time the ngView content is reloaded.
      */
-    ngViewFactory.$inject = ['$route', '$anchorScroll', '$compile', '$controller', '$animate'];
-    function ngViewFactory($route, $anchorScroll, $compile, $controller, $animate) {
+    ngViewFactory.$inject = ['$route', '$anchorScroll', '$animate'];
+    function ngViewFactory($route, $anchorScroll, $animate) {
         return {
             restrict: 'ECA',
             terminal: true,
             priority: 400,
             transclude: 'element',
-            compile: function (element, attr, linker) {
-                return function (scope, $element, attr) {
-                    var currentScope,
-                        currentElement,
-                        autoScrollExp = attr.autoscroll,
-                        onloadExp = attr.onload || '';
+            link: function (scope, $element, attr, ctrl, $transclude) {
+                var currentScope,
+                    currentElement,
+                    autoScrollExp = attr.autoscroll,
+                    onloadExp = attr.onload || '';
 
-                    scope.$on('$routeChangeSuccess', update);
-                    update();
+                scope.$on('$routeChangeSuccess', update);
+                update();
 
-                    function cleanupLastView() {
-                        if (currentScope) {
-                            currentScope.$destroy();
-                            currentScope = null;
-                        }
-                        if (currentElement) {
-                            $animate.leave(currentElement);
-                            currentElement = null;
-                        }
+                function cleanupLastView() {
+                    if (currentScope) {
+                        currentScope.$destroy();
+                        currentScope = null;
                     }
+                    if (currentElement) {
+                        $animate.leave(currentElement);
+                        currentElement = null;
+                    }
+                }
 
-                    function update() {
-                        var locals = $route.current && $route.current.locals,
-                            template = locals && locals.$template;
+                function update() {
+                    var locals = $route.current && $route.current.locals,
+                        template = locals && locals.$template;
 
-                        if (template) {
-                            var newScope = scope.$new();
-                            linker(newScope, function (clone) {
-                                clone.html(template);
-                                $animate.enter(clone, null, currentElement || $element, function onNgViewEnter() {
-                                    if (angular.isDefined(autoScrollExp)
-                                      && (!autoScrollExp || scope.$eval(autoScrollExp))) {
-                                        $anchorScroll();
-                                    }
-                                });
+                    if (angular.isDefined(template)) {
+                        var newScope = scope.$new();
+                        var current = $route.current;
 
-                                cleanupLastView();
-
-                                var link = $compile(clone.contents()),
-                                    current = $route.current;
-
-                                currentScope = current.scope = newScope;
-                                currentElement = clone;
-
-                                if (current.controller) {
-                                    locals.$scope = currentScope;
-                                    var controller = $controller(current.controller, locals);
-                                    if (current.controllerAs) {
-                                        currentScope[current.controllerAs] = controller;
-                                    }
-                                    clone.data('$ngControllerController', controller);
-                                    clone.children().data('$ngControllerController', controller);
+                        // Note: This will also link all children of ng-view that were contained in the original
+                        // html. If that content contains controllers, ... they could pollute/change the scope.
+                        // However, using ng-view on an element with additional content does not make sense...
+                        // Note: We can't remove them in the cloneAttchFn of $transclude as that
+                        // function is called before linking the content, which would apply child
+                        // directives to non existing elements.
+                        var clone = $transclude(newScope, function (clone) {
+                            $animate.enter(clone, null, currentElement || $element, function onNgViewEnter() {
+                                if (angular.isDefined(autoScrollExp)
+                                  && (!autoScrollExp || scope.$eval(autoScrollExp))) {
+                                    $anchorScroll();
                                 }
-
-                                link(currentScope);
-                                currentScope.$emit('$viewContentLoaded');
-                                currentScope.$eval(onloadExp);
                             });
-                        } else {
                             cleanupLastView();
-                        }
+                        });
+
+                        currentElement = clone;
+                        currentScope = current.scope = newScope;
+                        currentScope.$emit('$viewContentLoaded');
+                        currentScope.$eval(onloadExp);
+                    } else {
+                        cleanupLastView();
                     }
-                };
+                }
+            }
+        };
+    }
+
+    // This directive is called during the $transclude call of the first `ngView` directive.
+    // It will replace and compile the content of the element with the loaded template.
+    // We need this directive so that the element content is already filled when
+    // the link function of another directive on the same element as ngView
+    // is called.
+    ngViewFillContentFactory.$inject = ['$compile', '$controller', '$route'];
+    function ngViewFillContentFactory($compile, $controller, $route) {
+        return {
+            restrict: 'ECA',
+            priority: -400,
+            link: function (scope, $element) {
+                var current = $route.current,
+                    locals = current.locals;
+
+                $element.html(locals.$template);
+
+                var link = $compile($element.contents());
+
+                if (current.controller) {
+                    locals.$scope = scope;
+                    var controller = $controller(current.controller, locals);
+                    if (current.controllerAs) {
+                        scope[current.controllerAs] = controller;
+                    }
+                    $element.data('$ngControllerController', controller);
+                    $element.children().data('$ngControllerController', controller);
+                }
+
+                link(scope);
             }
         };
     }

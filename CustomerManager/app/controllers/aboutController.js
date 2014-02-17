@@ -1,9 +1,11 @@
 ﻿(function () {
 
-    var aboutController = function ($scope) {
+    var AboutController = function ($scope) {
 
     };
 
-    customersManager.customersApp.controller('AboutController', ['$scope', aboutController]);
+    AboutController.$inject = ['$scope'];
+
+    angular.module('customersApp').controller('AboutController', AboutController);
 
 }());

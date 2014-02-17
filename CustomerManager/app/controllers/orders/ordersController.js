@@ -1,7 +1,9 @@
 ﻿(function () {
 
-    var ordersController = function ($scope, dataService) {
+    var OrdersController = function ($scope, $filter, dataService) {
         $scope.customers = [];
+        $scope.filteredCustomers;
+        $scope.filteredCount;
 
         //paging
         $scope.totalRecords = 0;
@@ -16,7 +18,22 @@
         };
 
         function init() {
+            createWatches();
             getCustomers();
+        }
+
+        function createWatches() {
+            //Watch searchText value and pass it and the customers to nameCityStateFilter
+            //Doing this instead of adding the filter to ng-repeat allows it to only be run once (rather than twice)
+            //while also accessing the filtered count via $scope.filteredCount above
+            $scope.$watch("searchText", function (filterText) {
+                filterCustomersProducts(filterText);
+            });
+        }
+
+        function filterCustomersProducts(filterText) {
+            $scope.filteredCustomers = $filter("nameProductFilter")($scope.customers, filterText);
+            $scope.filteredCount = $scope.filteredCustomers.length;
         }
 
         function getCustomers() {
@@ -24,12 +41,15 @@
                 .then(function (data) {
                     $scope.totalRecords = data.totalRecords;
                     $scope.customers = data.results;
+                    filterCustomersProducts('');
                 }, function (error) {
                     alert(error.message);
                 });
         }
     };
 
-    customersManager.customersApp.controller('OrdersController', ['$scope', 'dataService', ordersController]);
+    OrdersController.$inject = ['$scope', '$filter', 'dataService'];
+
+    angular.module('customersApp').controller('OrdersController', OrdersController);
 
 }());

@@ -35,7 +35,7 @@
         };
 
         customersFactory.newCustomer = function () {
-            return $q.when({});
+            return $q.when({id: 0});
         };
 
         customersFactory.updateCustomer = function (customer) {
@@ -112,6 +112,6 @@
         return customersFactory;
     };
 
-    customersManager.customersApp.factory('customersService', ['$http', '$q', customersService]);
+    angular.module('customersApp').factory('customersService', ['$http', '$q', customersService]);
 
 }());

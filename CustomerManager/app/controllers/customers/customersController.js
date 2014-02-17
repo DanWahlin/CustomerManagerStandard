@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var customersController = function ($scope, $location, $filter, dataService, modalService) {
+    var CustomersController = function ($scope, $location, $filter, authService, dataService, modalService) {
 
         $scope.customers = [];
         $scope.filteredCustomers = [];
@@ -21,6 +21,11 @@
         };
 
         $scope.deleteCustomer = function (id) {
+            if (!authService.user.isAuthenticated) {
+                $location.path(authService.loginPath + $location.$$path);
+                return;
+            }
+
             var cust = getCustomerById(id);
             var custName = cust.firstName + ' ' + cust.lastName;
 
@@ -116,7 +121,8 @@
         }
     };
 
-    customersManager.customersApp.controller('CustomersController',
-        ['$scope', '$location', '$filter', 'dataService', 'modalService', customersController]);
+    CustomersController.$inject = ['$scope', '$location', '$filter', 'authService', 'dataService', 'modalService'];
+
+    angular.module('customersApp').controller('CustomersController', CustomersController);
 
 }());

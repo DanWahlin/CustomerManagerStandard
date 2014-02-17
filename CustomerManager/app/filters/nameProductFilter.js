@@ -31,6 +31,6 @@
         };
     };
 
-    customersManager.customersApp.filter('nameProductFilter', nameProductFilter);
+    angular.module('customersApp').filter('nameProductFilter', nameProductFilter);
 
 }());

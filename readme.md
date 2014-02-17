@@ -1,4 +1,4 @@
-﻿Customer Manager with AngularJS
+﻿ustomer Manager with AngularJS
 ===============
 
 If you’re new to AngularJS check out my [AngularJS in 60-ish Minutes](http://weblogs.asp.net/dwahlin/archive/2013/04/12/video-tutorial-angularjs-fundamentals-in-60-ish-minutes.aspx) video tutorial or download the [free eBook](http://weblogs.asp.net/dwahlin/archive/2013/07/30/angularjs-in-60-ish-minutes-the-ebook.aspx). Also check out [The AngularJS Magazine](http://flip.it/bdyUX) for up-to-date information on using AngularJS to build Single Page Applications (SPAs).
@@ -15,6 +15,7 @@ This application demonstrates:
 * A custom filter for filtering customer data
 * A custom directive to ensure unique values in a form for email 
 * A custom directive that intercepts $http and jQuery XHR requests (in case either are used) and displays a loading dialog
+* Provides login and authentication functionality (currently client-side only - plan to add server-side part too which is absolutely required in a "real" app)
 
 The factories can be switched by changing the app/services/config useBreeze setting to true.
 
@@ -44,15 +45,15 @@ In the CustomerManager directory execute 'npm install' to install Express, Mongo
 Load sample data into MongoDB by performing the following steps:
 
 * Execute 'mongod' to start the MongoDB daemon
-* Navigate to the CustomerManager directory (the one that has initMongoCustData.js in it) then execute 'mongo' to start the MongoDB shell
-* Enter the following in the mongo shell to load the seed files:
+* Navigate to the CustomerManager/server directory (the one that has initMongoData.js in it)
+* Execute 'mongo' to start the MongoDB shell
+* Enter the following in the mongo shell to load the data seed file:
  * use custmgr
- * load("initMongoCustData.js")
- * load("initMongoSettingsData.js")
- * load("initMongoStateData.js")
+ * load("initMongoData.js")
 
 Start the Node/Express server:
-* navigate to the CustomerManager/server directory then execute 'node app.js'
+* Navigate to the CustomerManager/server directory
+* Execute 'node app.js'
 
 View the application at http://localhost:3000
 

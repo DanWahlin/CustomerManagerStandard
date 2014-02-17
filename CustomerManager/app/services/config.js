@@ -4,6 +4,6 @@
         useBreeze: false
     };
 
-    customersManager.customersApp.value('config', value);
+    angular.module('customersApp').value('config', value);
 
 }());

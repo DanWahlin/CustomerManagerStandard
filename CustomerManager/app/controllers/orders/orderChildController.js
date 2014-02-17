@@ -1,6 +1,6 @@
 ﻿(function() {
 
-    var orderChildController = function ($scope) {
+    var OrderChildController = function ($scope) {
         $scope.orderby = 'product';
         $scope.reverse = false;
         $scope.ordersTotal = 0.00;
@@ -28,6 +28,8 @@
         }
     };
 
-    customersManager.customersApp.controller('OrderChildController', ['$scope', orderChildController]);
+    OrderChildController.$inject = ['$scope'];
+
+    angular.module('customersApp').controller('OrderChildController', OrderChildController);
 
 }());

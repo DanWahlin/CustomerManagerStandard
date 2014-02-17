@@ -41,7 +41,7 @@
 
                     httpInterceptor.responseError = function (rejection) {
                         processResponse();
-                        return rejection || $q.when(rejection);
+                        return $q.reject(rejection);
                     };
                 }
 
@@ -153,9 +153,9 @@ wcDirectivesApp.factory('httpInterceptor', httpInterceptor);
 //Hook httpInterceptor factory into the $httpProvider interceptors so that we can monitor XHR calls
 wcDirectivesApp.config(['$httpProvider', httpProvider]);
 
-    //Directive that uses the httpInterceptor factory above to monitor XHR calls
-    //When a call is made it displays an overlay and a content area 
-    //No attempt has been made at this point to test on older browsers
-    wcDirectivesApp.directive('wcOverlay', ['$q', '$timeout', '$window', 'httpInterceptor', wcOverlayDirective]);
+//Directive that uses the httpInterceptor factory above to monitor XHR calls
+//When a call is made it displays an overlay and a content area 
+//No attempt has been made at this point to test on older browsers
+wcDirectivesApp.directive('wcOverlay', ['$q', '$timeout', '$window', 'httpInterceptor', wcOverlayDirective]);
 
 }());

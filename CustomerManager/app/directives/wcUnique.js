@@ -26,6 +26,6 @@
         };
     };
 
-    customersManager.customersApp.directive('wcUnique', ['dataService', wcUniqueDirective]);
+    angular.module('customersApp').directive('wcUnique', ['dataService', wcUniqueDirective]);
 
 }());
