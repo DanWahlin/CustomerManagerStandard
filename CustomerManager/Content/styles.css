@@ -65,6 +65,10 @@ body {
     margin-left:30px;
 }
 
+.appTitle {
+    line-height:50px;
+}
+
 .view {
 
 }
