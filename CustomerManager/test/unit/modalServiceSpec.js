@@ -82,7 +82,11 @@
                 keyboard: true,
                 modalFade: true,
                 templateUrl: 'modal.html',
+<<<<<<< HEAD
                 controller: 'SomeCtrl'
+=======
+                controller:'SomeCtrl'
+>>>>>>> 59d30bbb958bb87369d96a984f934a1bb8d089b5
             };
             _modalService.show(modalDefaults, {});
 
@@ -94,4 +98,8 @@
             expect(result).toBe(modalResult.result);
         });
     });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 59d30bbb958bb87369d96a984f934a1bb8d089b5

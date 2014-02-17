@@ -1,16 +1,26 @@
 ﻿describe('wcUnique directive specs', function () {
+<<<<<<< HEAD
     var scope, modelCtrl, modelValue, customerSvcMock, form,
         element, input, compiledForm, changeInputValueTo, passPromise;
+=======
+    var scope, modelCtrl, modelValue, customerSvcMock, form, element, input, compiledForm, changeInputValueTo, passPromise;
+>>>>>>> 59d30bbb958bb87369d96a984f934a1bb8d089b5
 
     function setEmailId(value) {
         scope.customer.email = value;
         scope.$digest();
     }
+<<<<<<< HEAD
 
     beforeEach(function () {
         module('customersApp')
     });
 
+=======
+    beforeEach(function () {
+        module('customersApp')
+    });
+>>>>>>> 59d30bbb958bb87369d96a984f934a1bb8d089b5
     beforeEach(function () {
         inject(function ($compile, $rootScope, $q, customersService) {
             scope = $rootScope.$new();
@@ -56,7 +66,11 @@
 
     it('Should call checkUniqueValue when value is entered in the input field', function () {
         changeInputValueTo(compiledForm.find('input'), "abc@def.com");
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 59d30bbb958bb87369d96a984f934a1bb8d089b5
         expect(customerSvcMock.checkUniqueValue).toHaveBeenCalled();
     });
 
