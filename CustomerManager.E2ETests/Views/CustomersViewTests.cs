@@ -3,7 +3,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using Protractor;
-using CustomerManager.E2ETests.PageObjects;
 
 namespace CustomerManager.E2ETests
 {
@@ -32,60 +31,42 @@ namespace CustomerManager.E2ETests
         [Test]
         public void CardViewByDefault()
         {
-            var ngDriver = new NgWebDriver(driver);
+            IWebDriver ngDriver = new NgWebDriver(driver);
             ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
 
-            var customersPage = new CustomersPage(ngDriver);
-
-            Assert.IsTrue(customersPage.IsCardViewSelected());
+            // Assert 'card view' is selected
+            Assert.IsTrue(ngDriver.FindElement(By.ClassName("cardContainer")).Displayed);
+            Assert.IsFalse(ngDriver.FindElement(By.ClassName("gridContainer")).Displayed);
         }
 
         [Test]
         public void SwitchToListView()
         {
-            var ngDriver = new NgWebDriver(driver);
+            IWebDriver ngDriver = new NgWebDriver(driver);
             ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
 
-            var customersPage = new CustomersPage(ngDriver);
-            customersPage.SwitchToListView();
+            IWebElement listViewMenu = ngDriver.FindElement(By.XPath("//ul//li[contains(.,'List View')]"));
+            Assert.IsFalse(listViewMenu.GetAttribute("class").Contains("active"));
+            listViewMenu.Click();
 
-            Assert.IsTrue(customersPage.IsListViewSelected());
+            // Assert 'list view' is selected
+            Assert.IsTrue(listViewMenu.GetAttribute("class").Contains("active"));
+            Assert.IsFalse(ngDriver.FindElement(By.ClassName("cardContainer")).Displayed);
+            Assert.IsTrue(ngDriver.FindElement(By.ClassName("gridContainer")).Displayed);
         }
 
         [Test]
         public void ShowTop10Customers()
         {
-            var ngDriver = new NgWebDriver(driver);
+            IWebDriver ngDriver = new NgWebDriver(driver);
             ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
 
-            var customersPage = new CustomersPage(ngDriver);
-            Assert.AreEqual(10, customersPage.GetCustomersCount());
+            IWebElement cardElement = ngDriver.FindElement(By.ClassName("cardContainer"));
+            var customers = cardElement.FindElements(NgBy.Repeater("customer in filteredCustomers"));
+            Assert.AreEqual(10, customers.Count);
 
             IWebElement footer = ngDriver.FindElement(NgBy.Binding("totalRecords"));
             Assert.AreEqual("Showing 10 of 23 total customers", footer.Text);
-        }
-
-        [Test]
-        public void ShouldFilter()
-        {
-            var ngDriver = new NgWebDriver(driver);
-            ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
-
-            var customersPage = new CustomersPage(ngDriver);
-
-            Assert.AreEqual(4, customersPage.Filter("Wahlin").GetCustomersCount()); // Fail!
-        }
-
-        [Test]
-        public void ShowCustomerOrders()
-        {
-            var ngDriver = new NgWebDriver(driver);
-            ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
-
-            var customerOrdersPage = new CustomersPage(ngDriver).GoToCustomerOrders(2);
-
-            Assert.AreEqual("Dan Wahlin", customerOrdersPage.GetCustomerName());
-            Assert.AreEqual(5, customerOrdersPage.GetOrdersCount());
         }
 
         // etc.
@@ -115,9 +96,10 @@ $httpBackend.whenGET('\/api/dataservice/customersSummary?$top=10&$skip=0').respo
             var ngDriver = new NgWebDriver(driver, mockModule);
             ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
 
-            var customersPage = new CustomersPage(ngDriver);
-            Assert.AreEqual(0, customersPage.GetCustomersCount());
-            Assert.AreEqual("No customers found", customersPage.GetFooterText());
+            var cardElement = ngDriver.FindElement(By.ClassName("cardContainer"));
+            Assert.AreEqual(0, cardElement.FindElements(NgBy.Repeater("customer in filteredCustomers")).Count);
+
+            Assert.IsTrue(ngDriver.FindElement(By.XPath("//h4[contains(.,'No customers found')]")).Displayed);
         }
 
         [Test]
@@ -169,16 +151,31 @@ $httpBackend.whenGET('\/api/dataservice/customersSummary?$top=10&$skip=0').respo
 
             var ngDriver = new NgWebDriver(driver, mockModule);
             ngDriver.Navigate().GoToUrl("http://localhost:58000/#/customers");
+            
+            var cardElement = ngDriver.FindElement(By.ClassName("cardContainer"));
 
-            var customersPage = new CustomersPage(ngDriver);
-            Assert.AreEqual(2, customersPage.GetCustomersCount());
-            Assert.AreEqual("Showing 2 of 2 total customers", customersPage.GetFooterText());
+            var footer = ngDriver.FindElement(NgBy.Binding("totalRecords"));
+            Assert.AreEqual("Showing 2 of 2 total customers", footer.Text);
+
+            var customers = cardElement.FindElements(NgBy.Repeater("customer in filteredCustomers"));
+            Assert.AreEqual(2, customers.Count);
 
             // Delete Dan (sorry...)
-            customersPage.DeleteCustomer(2).ConfirmDelete();
+            foreach (var customer in customers)
+            {
+                if ((long)customer.Evaluate("customer.id") == 2)
+                {
+                    // Close card
+                    customer.FindElement(By.ClassName("cardClose")).Click();
 
-            Assert.AreEqual(1, customersPage.GetCustomersCount());
-            Assert.AreEqual("Showing 1 of 1 total customers", customersPage.GetFooterText()); // Fail!
+                    // Popup to confirm
+                    ngDriver.FindElement(By.XPath("//button[contains(.,'Delete Customer')]")).Click();
+                    break;
+                }
+            }
+
+            Assert.AreEqual(1, cardElement.FindElements(NgBy.Repeater("customer in filteredCustomers")).Count);
+            Assert.AreEqual("Showing 1 of 1 total customers", footer.Text); // Fail!
         }
 
         // etc.
