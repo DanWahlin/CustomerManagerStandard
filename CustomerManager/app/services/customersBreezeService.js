@@ -2,7 +2,7 @@
 
     var customersBreezeService = function ($q) {
 
-        var customersFactory = {};
+        var factory = {};
         var EntityQuery = breeze.EntityQuery;
 
         // configure to use the model library for Angular
@@ -13,19 +13,19 @@
         var serviceName = 'breeze/breezedataservice';
         var entityManager = new breeze.EntityManager(serviceName);
 
-        customersFactory.getCustomers = function (pageIndex, pageSize) {
+        factory.getCustomers = function (pageIndex, pageSize) {
             return getPagedResource('Customers', 'orders', pageIndex, pageSize);
         };
 
-        customersFactory.getCustomersSummary = function (pageIndex, pageSize) {
+        factory.getCustomersSummary = function (pageIndex, pageSize) {
             return getPagedResource('CustomersSummary', '', pageIndex, pageSize);
         };
 
-        customersFactory.getStates = function () {
+        factory.getStates = function () {
             return getAll('States');
         };
 
-        customersFactory.getCustomer = function (id) {
+        factory.getCustomer = function (id) {
             var query = EntityQuery
                 .from('Customers')
                 .where('id', '==', id)
@@ -33,7 +33,7 @@
             return executeQuery(query, true);
         };
 
-        customersFactory.checkUniqueValue = function (id, property, value) {
+        factory.checkUniqueValue = function (id, property, value) {
             var propertyPredicate = new breeze.Predicate(property, "==", value);
             var predicate = (id) ? propertyPredicate.and(new breeze.Predicate("id", "!=", id)) : propertyPredicate;
 
@@ -42,17 +42,17 @@
             return executeQuery(query);
         };
 
-        customersFactory.insertCustomer = function (customer) {
+        factory.insertCustomer = function (customer) {
             return entityManager.saveChanges();
         };
 
-        customersFactory.newCustomer = function () {
+        factory.newCustomer = function () {
             return getMetadata().then(function () {
                 return entityManager.createEntity('Customer', { firstName: '', lastName: '' });
             });
         };
 
-        customersFactory.deleteCustomer = function (id) {
+        factory.deleteCustomer = function (id) {
             if (!id) {
                 alert('ID was null - cannot delete');
                 return null;
@@ -81,7 +81,7 @@
             return entityManager.saveChanges();
         };
 
-        customersFactory.updateCustomer = function (customer) {
+        factory.updateCustomer = function (customer) {
             return entityManager.saveChanges();
         };
 
@@ -168,7 +168,7 @@
         entityManager.metadataStore.registerEntityTypeCtor('Order', OrderCtor, orderInit);
         entityManager.metadataStore.registerEntityTypeCtor('Customer', CustomerCtor, customerInit);
 
-        return customersFactory;
+        return factory;
     };
 
     customersBreezeService.$inject = ['$q'];

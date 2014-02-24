@@ -179,3 +179,16 @@ describe('customersController Tests', function () {
     });
 
 });
+
+describe('ReminderController Test', function () {
+    var scope, controller;
+
+    beforeEach(function () {
+        module('reminderApp');
+        inject(function ($rootScope, $controller) {
+            scope = $rootScope.$new();
+            controller = $controller("ReminderController", { $scope: scope, reminderFactory: mockService });
+        });
+    });
+
+});

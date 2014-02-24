@@ -2,24 +2,24 @@
 
     var customersService = function ($http, $q) {
         var serviceBase = '/api/dataservice/',
-            customersFactory = {};
+            factory = {};
 
-        customersFactory.getCustomers = function (pageIndex, pageSize) {
+        factory.getCustomers = function (pageIndex, pageSize) {
             return getPagedResource('customers', pageIndex, pageSize);
         };
 
-        customersFactory.getCustomersSummary = function (pageIndex, pageSize) {
+        factory.getCustomersSummary = function (pageIndex, pageSize) {
             return getPagedResource('customersSummary', pageIndex, pageSize);
         };
 
-        customersFactory.getStates = function () {
+        factory.getStates = function () {
             return $http.get(serviceBase + 'states').then(
                 function (results) {
                     return results.data;
                 });
         };
 
-        customersFactory.checkUniqueValue = function (id, property, value) {
+        factory.checkUniqueValue = function (id, property, value) {
             if (!id) id = 0;
             return $http.get(serviceBase + 'checkUnique/' + id + '?property=' + property + '&value=' + escape(value)).then(
                 function (results) {
@@ -27,30 +27,30 @@
                 });
         };
 
-        customersFactory.insertCustomer = function (customer) {
+        factory.insertCustomer = function (customer) {
             return $http.post(serviceBase + 'postCustomer', customer).then(function (results) {
                 customer.id = results.data.id;
                 return results.data;
             });
         };
 
-        customersFactory.newCustomer = function () {
+        factory.newCustomer = function () {
             return $q.when({id: 0});
         };
 
-        customersFactory.updateCustomer = function (customer) {
+        factory.updateCustomer = function (customer) {
             return $http.put(serviceBase + 'putCustomer/' + customer.id, customer).then(function (status) {
                 return status.data;
             });
         };
 
-        customersFactory.deleteCustomer = function (id) {
+        factory.deleteCustomer = function (id) {
             return $http.delete(serviceBase + 'deleteCustomer/' + id).then(function (status) {
                 return status.data;
             });
         };
 
-        customersFactory.getCustomer = function (id) {
+        factory.getCustomer = function (id) {
             //then does not unwrap data so must go through .data property
             //success unwraps data automatically (no need to call .data property)
             return $http.get(serviceBase + 'customerById/' + id).then(function (results) {
@@ -109,9 +109,11 @@
             return total;
         };
 
-        return customersFactory;
+        return factory;
     };
 
-    angular.module('customersApp').factory('customersService', ['$http', '$q', customersService]);
+    customersService.$inject = ['$http', '$q'];
+
+    angular.module('customersApp').factory('customersService', customersService);
 
 }());
