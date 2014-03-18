@@ -17,46 +17,48 @@ namespace CustomerManager.Controllers
         public DataServiceController()
         {
             _Repository = new CustomerRepository();
-            //System.Threading.Thread.Sleep(5000); 
         }
 
         [HttpGet]
         [Queryable]
-        public IQueryable<Customer> Customers()
+        public HttpResponseMessage Customers()
         {
-            var query = _Repository.GetCustomers();
-            var totalRecords = query.Count();
+            var customers = _Repository.GetCustomers();
+            var totalRecords = customers.Count();
             HttpContext.Current.Response.Headers.Add("X-InlineCount", totalRecords.ToString());
-            return query.AsQueryable();
+            return Request.CreateResponse(HttpStatusCode.OK, customers);
         }
 
         [HttpGet]
-        public List<State> States()
+        public HttpResponseMessage States()
         {
-            return _Repository.GetStates();
+            var states = _Repository.GetStates();
+            return Request.CreateResponse(HttpStatusCode.OK, states);
         }
 
         [HttpGet]
         [Queryable]
-        public IQueryable<CustomerSummary> CustomersSummary()
+        public HttpResponseMessage CustomersSummary()
         {
             int totalRecords;
             var custSummary = _Repository.GetCustomersSummary(out totalRecords);
             HttpContext.Current.Response.Headers.Add("X-InlineCount", totalRecords.ToString());
-            return custSummary;
+            return Request.CreateResponse(HttpStatusCode.OK, custSummary);
         }
 
         [HttpGet]
-        public OperationStatus CheckUnique(int id, string property, string value)
+        public HttpResponseMessage CheckUnique(int id, string property, string value)
         {
-            return _Repository.CheckUnique(id, property, value);            
+            var opStatus = _Repository.CheckUnique(id, property, value);
+            return Request.CreateResponse(HttpStatusCode.OK, opStatus);
         }
 
         // GET api/<controller>/5
         [HttpGet]
-        public Customer CustomerById(int id)
+        public HttpResponseMessage CustomerById(int id)
         {
-            return _Repository.GetCustomerById(id);
+            var customer = _Repository.GetCustomerById(id);
+            return Request.CreateResponse(HttpStatusCode.OK, customer);
         }
 
         // POST api/<controller>

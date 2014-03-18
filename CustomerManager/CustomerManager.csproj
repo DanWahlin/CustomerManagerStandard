@@ -131,6 +131,7 @@
     <Content Include="app\partials\dialog.html" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\dialogService.js" />
+    <Content Include="app\services\httpInterceptors.js" />
     <Content Include="app\services\modalService.js" />
     <Content Include="app\services\routeResolver.js" />
     <Content Include="app\views\about.html" />
@@ -221,7 +222,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

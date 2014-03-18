@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var customersBreezeService = function ($q) {
+    var customersBreezeService = function ($q, $window) {
 
         var factory = {};
         var EntityQuery = breeze.EntityQuery;
@@ -54,7 +54,7 @@
 
         factory.deleteCustomer = function (id) {
             if (!id) {
-                alert('ID was null - cannot delete');
+                $window.alert('ID was null - cannot delete');
                 return null;
             }
             var customer = entityManager.getEntityByKey('Customer', id);
@@ -93,7 +93,7 @@
             }
 
             function queryError(error) {
-                alert(error.message);
+                $window.alert(error.message);
             }
         }
 
@@ -134,7 +134,7 @@
                     results: data.results
                 };
             }, function (error) {
-                alert('Error ' + error.message);
+                $window.alert('Error ' + error.message);
             });
         }
 
@@ -171,7 +171,7 @@
         return factory;
     };
 
-    customersBreezeService.$inject = ['$q'];
+    customersBreezeService.$inject = ['$q', '$window'];
 
     angular.module('customersApp')
         .factory('customersBreezeService', customersBreezeService);

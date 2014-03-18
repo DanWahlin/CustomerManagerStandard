@@ -4,8 +4,9 @@
         return (config.useBreeze) ? customersBreezeService : customersService;
     };
 
-    angular.module('customersApp').factory('dataService',
-        ['config', 'customersService', 'customersBreezeService', dataService]);
+    dataService.$inject = ['config', 'customersService', 'customersBreezeService'];
+
+    angular.module('customersApp').factory('dataService', dataService);
 
 }());
 

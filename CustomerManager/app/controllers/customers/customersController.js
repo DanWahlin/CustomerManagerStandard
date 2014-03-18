@@ -1,6 +1,7 @@
 ﻿(function () {
 
-    var CustomersController = function ($scope, $location, $filter, authService, dataService, modalService) {
+    var CustomersController = function ($scope, $location, $filter, $window,
+        authService, dataService, modalService) {
 
         $scope.customers = [];
         $scope.filteredCustomers = [];
@@ -47,7 +48,7 @@
                         }
                         filterCustomers($scope.searchText);
                     }, function (error) {
-                        alert('Error deleting customer: ' + error.message);
+                        $window.alert('Error deleting customer: ' + error.message);
                     });
                 }
             });
@@ -101,7 +102,7 @@
                 $scope.customers = data.results;
                 filterCustomers(''); //Trigger initial filter
             }, function (error) {
-                alert(error.message);
+                $window.alert('Sorry, an error occurred: ' + error.data.message);
             });
         }
 
@@ -121,7 +122,7 @@
         }
     };
 
-    CustomersController.$inject = ['$scope', '$location', '$filter', 'authService', 'dataService', 'modalService'];
+    CustomersController.$inject = ['$scope', '$location', '$filter', '$window', 'authService', 'dataService', 'modalService'];
 
     angular.module('customersApp').controller('CustomersController', CustomersController);
 

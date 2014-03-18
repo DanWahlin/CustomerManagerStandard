@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var CustomerOrdersController = function ($scope, $routeParams, dataService) {
+    var CustomerOrdersController = function ($scope, $routeParams, $window, dataService) {
         //Grab customerId off of the route        
         var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0;
 
@@ -15,13 +15,13 @@
                 .then(function (customer) {
                     $scope.customer = customer;
                 }, function (error) {
-                    alert(error.message);
+                    $window.alert("Sorry, an error occurred: " + error.message);
                 });
             }
         }
     };
 
-    CustomerOrdersController.$inject = ['$scope', '$routeParams', 'dataService'];
+    CustomerOrdersController.$inject = ['$scope', '$routeParams', '$window', 'dataService'];
 
     angular.module('customersApp').controller('CustomerOrdersController', CustomerOrdersController);
 

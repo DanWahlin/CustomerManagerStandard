@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var app = angular.module('customersApp',
-        ['ngRoute', 'ngAnimate', 'wc.Directives', 'ui.bootstrap', 'breeze.angular.q']);
+        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular.q']);
 
     app.config(['$routeProvider', function ($routeProvider) {
 
@@ -42,13 +42,14 @@
             
             //Client-side security. Server-side framework MUST add it's 
             //own security as well since client-based security is easily hacked
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if (next && next.$$route && next.$$route.secure) {
-                    if (!authService.user.isAuthenticated) {
-                        $location.path(authService.loginPath + $location.$$path);
-                    }
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if (next && next.$$route && next.$$route.secure) {
+                if (!authService.user.isAuthenticated) {
+                    authService.redirectToLogin();
+                    
                 }
-            });
+            }
+        });
 
         }]);
 }());

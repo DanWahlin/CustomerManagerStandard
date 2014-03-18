@@ -144,7 +144,7 @@
         return {};
     };
 
-    var wcDirectivesApp = angular.module('wc.Directives', []);
+    var wcDirectivesApp = angular.module('wc.directives', []);
 
 //Empty factory to hook into $httpProvider.interceptors
 //Directive will hookup request, response, and responseError interceptors

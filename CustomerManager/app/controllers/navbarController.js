@@ -1,8 +1,8 @@
 ﻿(function () {
 
     var NavbarController = function ($scope, $location, config, authService) {
-        $scope.isCollapsed = false;
         var appTitle = 'Customer Management';
+        $scope.isCollapsed = false;
         $scope.appTitle = (config.useBreeze) ? appTitle + ' Breeze' : appTitle;
 
         $scope.highlight = function (path) {
@@ -15,16 +15,23 @@
             if (isAuthenticated) { //logout 
                 authService.logout().then(function () {
                     $location.path('/');
+                    return;
                 });                
             }
-            else {
-                var path = authService.loginPath + $location.$$path;
-                $location.path(path);
-            }
+            redirectToLogin();
         };
+
+        function redirectToLogin() {
+            var path = '/login' + $location.$$path;
+            $location.path(path);
+        }
 
         $scope.$on('loginStatusChanged', function (loggedIn) {
             setLoginLogoutText(loggedIn);
+        });
+
+        $scope.$on('redirectToLogin', function () {
+            redirectToLogin();
         });
 
         function setLoginLogoutText() {

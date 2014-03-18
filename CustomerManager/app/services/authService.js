@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var app = angular.module('customersApp');
+
     var authFactory = function ($http, $q, $rootScope) {
         var factory = {
             loginPath: '/login',
@@ -24,6 +26,10 @@
             return $q.when(loggedIn);
         };
 
+        factory.redirectToLogin = function () {
+            $rootScope.$broadcast('redirectToLogin', null);
+        };
+
         function changeAuth(loggedIn) {
             factory.user.isAuthenticated = loggedIn;
             $rootScope.$broadcast('loginStatusChanged', loggedIn);
@@ -34,7 +40,7 @@
 
     authFactory.$inject = ['$http', '$q', '$rootScope'];
 
-    angular.module('customersApp')
-        .factory('authService', authFactory);
+    app.factory('authService', authFactory);
 
 }());
+

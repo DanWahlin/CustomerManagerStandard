@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var OrdersController = function ($scope, $filter, dataService) {
+    var OrdersController = function ($scope, $filter, $window, dataService) {
         $scope.customers = [];
         $scope.filteredCustomers;
         $scope.filteredCount;
@@ -43,12 +43,12 @@
                     $scope.customers = data.results;
                     filterCustomersProducts('');
                 }, function (error) {
-                    alert(error.message);
+                    $window.alert(error.message);
                 });
         }
     };
 
-    OrdersController.$inject = ['$scope', '$filter', 'dataService'];
+    OrdersController.$inject = ['$scope', '$filter', '$window', 'dataService'];
 
     angular.module('customersApp').controller('OrdersController', OrdersController);
 

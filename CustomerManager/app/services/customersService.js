@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var customersService = function ($http, $q) {
+    var customersFactory = function ($http, $q) {
         var serviceBase = '/api/dataservice/',
             factory = {};
 
@@ -112,8 +112,8 @@
         return factory;
     };
 
-    customersService.$inject = ['$http', '$q'];
+    customersFactory.$inject = ['$http', '$q'];
 
-    angular.module('customersApp').factory('customersService', customersService);
+    angular.module('customersApp').factory('customersService', customersFactory);
 
 }());
