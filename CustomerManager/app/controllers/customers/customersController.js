@@ -8,13 +8,12 @@
         $scope.filteredCount = 0;
         $scope.orderby = 'lastName';
         $scope.reverse = false;
+        $scope.searchText = null;
 
         //paging
         $scope.totalRecords = 0;
         $scope.pageSize = 10;
         $scope.currentPage = 1;
-
-        init();
 
         $scope.pageChanged = function (page) {
             $scope.currentPage = page;
@@ -54,18 +53,18 @@
             });
         };
 
-        $scope.ViewEnum = {
+        $scope.DisplayModeEnum = {
             Card: 0,
             List: 1
         };
 
-        $scope.changeView = function (view) {
-            switch (view) {
-                case $scope.ViewEnum.Card:
-                    $scope.listViewEnabled = false;
+        $scope.changeDisplayMode = function (displayMode) {
+            switch (displayMode) {
+                case $scope.DisplayModeEnum.Card:
+                    $scope.listDisplayModeEnabled = false;
                     break;
-                case $scope.ViewEnum.List:
-                    $scope.listViewEnabled = true;
+                case $scope.DisplayModeEnum.List:
+                    $scope.listDisplayModeEnabled = true;
                     break;
             }
         };
@@ -106,10 +105,10 @@
             });
         }
 
-        function filterCustomers(filterText) {
-            $scope.filteredCustomers = $filter("nameCityStateFilter")($scope.customers, filterText);
-            $scope.filteredCount = $scope.filteredCustomers.length;
-        }
+function filterCustomers(filterText) {
+    $scope.filteredCustomers = $filter("nameCityStateFilter")($scope.customers, filterText);
+    $scope.filteredCount = $scope.filteredCustomers.length;
+}
 
         function getCustomerById(id) {
             for (var i = 0; i < $scope.customers.length; i++) {
@@ -120,6 +119,8 @@
             }
             return null;
         }
+
+        init();
     };
 
     CustomersController.$inject = ['$scope', '$location', '$filter', '$window', 'authService', 'dataService', 'modalService'];
