@@ -105,10 +105,10 @@
             });
         }
 
-function filterCustomers(filterText) {
-    $scope.filteredCustomers = $filter("nameCityStateFilter")($scope.customers, filterText);
-    $scope.filteredCount = $scope.filteredCustomers.length;
-}
+        function filterCustomers(filterText) {
+            $scope.filteredCustomers = $filter("nameCityStateFilter")($scope.customers, filterText);
+            $scope.filteredCount = $scope.filteredCustomers.length;
+        }
 
         function getCustomerById(id) {
             for (var i = 0; i < $scope.customers.length; i++) {

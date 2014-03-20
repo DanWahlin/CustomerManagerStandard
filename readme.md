@@ -49,7 +49,7 @@ Load sample data into MongoDB by performing the following steps:
 * Navigate to the CustomerManager/server directory (the one that has initMongoData.js in it)
 * Execute 'mongo' to start the MongoDB shell
 * Enter the following in the mongo shell to load the data seed file:
- * use custmgr
+ * use CustomerManager
  * load("initMongoData.js")
 
 Start the Node/Express server:
