@@ -35,7 +35,7 @@
         });
 
         function setLoginLogoutText() {
-            $scope.loginLinkText = (authService.user.isAuthenticated) ? 'Logout' : 'Login';
+            $scope.loginLogoutText = (authService.user.isAuthenticated) ? 'Logout' : 'Login';
         }
 
         setLoginLogoutText();

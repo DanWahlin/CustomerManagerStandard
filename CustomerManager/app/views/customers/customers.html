@@ -79,12 +79,11 @@
         <div class="row show-hide-animation" data-ng-show="customers.length > 0">
             <div class="col-md-12">
                 <div data-pagination
-                     data-on-select-page="pageChanged(page)" 
-                     data-total-items="totalRecords" 
-                     data-page="currentPage"
-                     data-boundary-links="true" 
-                     class="pagination-sm">
-                </div>
+                        data-on-select-page="pageChanged(page)" 
+                        data-total-items="totalRecords" 
+                        data-page="currentPage"
+                        data-boundary-links="true" 
+                        class="pagination-sm" />
                 <h5>Showing {{ filteredCount }} of {{ totalRecords}} total customers</h5>
             </div>
         </div>

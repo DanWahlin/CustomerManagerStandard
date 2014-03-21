@@ -202,6 +202,7 @@
     <Compile Include="Model\OperationStatus.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\State.cs" />
+    <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerManagerContext.cs" />
     <Compile Include="Repository\CustomerManagerDatabaseInitializer.cs" />

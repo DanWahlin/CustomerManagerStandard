@@ -143,7 +143,16 @@ for (i = 0; i < l; i++) {
     c.orders = [];
     print('firstOrder: ' + firstOrder + ", lastOrder: " + lastOrder);
     for (j = firstOrder; j <= lastOrder && j < n; j++) {
-        var o = { "product": orders[j].product, "price": orders[j].price, "quantity": orders[j].quantity };
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + (Math.random() * 100));
+
+        var o = {
+            "product": orders[j].product,
+            "price": orders[j].price,
+            "quantity": orders[j].quantity,
+            "date": tomorrow
+        };
         c.orders.push(o);
     }
     c.orderCount = c.orders.length;

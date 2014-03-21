@@ -127,7 +127,7 @@ exports.customersSummary = function (req, res) {
     });
 };
 
-exports.checkemail = function (req, res) {
+exports.checkEmail = function (req, res) {
     console.log('*** checkemail');
 
     db.getCustomerEmail(req.query.value, function (err, customer) {
@@ -141,6 +141,23 @@ exports.checkemail = function (req, res) {
             res.json({ 'status': (customer === undefined) });
         }
     });
+};
+
+exports.login = function (req, res) {
+    console.log('*** login');
+    var userLogin = req.body.userLogin;
+    var userName = userLogin.userName;
+    var password = userLogin.password;
+
+    //Simulate login
+    res.json({ status: true });
+};
+
+exports.logout = function (req, res) {
+    console.log('*** logout');
+
+    //Simulate logout
+    res.json({ status: true });
 };
 
 

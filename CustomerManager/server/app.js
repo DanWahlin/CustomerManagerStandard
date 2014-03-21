@@ -54,15 +54,19 @@ var baseUrl = '/api/dataservice/';
 
 app.get(baseUrl + 'Customers', api.customers);
 app.get(baseUrl + 'Customer/:id', api.customer);
+app.get(baseUrl + 'CustomersSummary', api.customersSummary);
+app.get(baseUrl + 'CustomerById/:id', api.customer);
+
 app.post(baseUrl + 'PostCustomer', api.addCustomer);
 app.put(baseUrl + 'PutCustomer/:id', api.editCustomer);
 app.delete(baseUrl + 'DeleteCustomer/:id', api.deleteCustomer);
 
 app.get(baseUrl + 'States', api.states);
 
-app.get(baseUrl + 'CustomersSummary', api.customersSummary);
-app.get(baseUrl + 'CustomerById/:id', api.customer);
-app.get(baseUrl + 'CheckUnique/:email', api.checkemail);
+app.get(baseUrl + 'CheckUnique', api.checkEmail);
+
+app.post(baseUrl + 'Login', api.login);
+app.post(baseUrl + 'Logout', api.logout);
 
 
 // redirect all others to the index (HTML5 history)

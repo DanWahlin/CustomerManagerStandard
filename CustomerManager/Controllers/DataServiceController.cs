@@ -53,6 +53,20 @@ namespace CustomerManager.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, opStatus);
         }
 
+        [HttpPost]
+        public HttpResponseMessage Login([FromBody]UserLogin userLogin)
+        {
+            //Simulated login
+            return Request.CreateResponse(HttpStatusCode.OK, new { status = true});
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Logout()
+        {
+            //Simulated logout
+            return Request.CreateResponse(HttpStatusCode.OK, new { status = true });
+        }
+
         // GET api/<controller>/5
         [HttpGet]
         public HttpResponseMessage CustomerById(int id)
