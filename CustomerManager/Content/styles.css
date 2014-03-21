@@ -171,6 +171,7 @@ footer {
 .customerEdit input[type='email'],
 .customerEdit select,
 .login input[type='text'], 
+.login input[type='email'],
 .login input[type='password'] {
     width:250px;
 }
@@ -335,7 +336,7 @@ input.ng-valid, select.ng-valid {
     position:absolute;
     padding: 5px;
     background-color: #E03930;
-    color:black;
+    color:white;
     top:0px;
     left:270px;
 }
