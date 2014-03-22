@@ -53,8 +53,12 @@ Load sample data into MongoDB by performing the following steps:
  * load("initMongoData.js")
 
 Start the Node/Express server:
+
+* Open a command prompt
+* Navigate to the CustomerManager directory
+* Run 'npm init' at the command prompt
 * Navigate to the CustomerManager/server directory
-* Execute 'node server.js'
+* Run 'node server.js'
 
 View the application at http://localhost:3000
 
