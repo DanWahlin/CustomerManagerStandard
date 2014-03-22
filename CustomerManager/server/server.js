@@ -27,7 +27,9 @@ app.configure(function () {
     app.use(app.router);
 });
 
-var conn = 'mongodb://localhost/CustomerManager';
+//Local Connection 
+var conn = 'mongodb://localhost/customermanager';
+
 var db;
 db = new DB.startup(conn);
 

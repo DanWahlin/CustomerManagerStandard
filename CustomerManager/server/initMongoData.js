@@ -1,4 +1,4 @@
-var db = db.getSiblingDB('CustomerManager');
+var db = db.getSiblingDB('customermanager');
 
 //Customers
 var customerNames =
