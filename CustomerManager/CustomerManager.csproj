@@ -169,12 +169,12 @@
     <Content Include="server\initMongoData.js" />
     <Content Include="Scripts\tweenMax.min.js" />
     <Content Include="server\accessDB.js" />
-    <Content Include="server\app.js" />
     <Content Include="server\lib\protectJSON.js" />
     <Content Include="server\models\customer.js" />
     <Content Include="server\models\state.js" />
     <Content Include="server\routes\api.js" />
     <Content Include="server\routes\index.js" />
+    <Content Include="server\server.js" />
     <Content Include="test\helpers\serviceFactories.js" />
     <Content Include="test\karma.conf.js" />
     <Content Include="test\lib\angular-animate.js" />
