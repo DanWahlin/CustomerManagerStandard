@@ -1,7 +1,7 @@
 ﻿describe('wcOverlay directive specs', function () {
     var scope, compile, element, compiledOverlay;
 
-    beforeEach(module('wc.Directives'));
+    beforeEach(module('wc.directives'));
 
     beforeEach(inject(function ($rootScope, $compile) {
         scope = $rootScope;

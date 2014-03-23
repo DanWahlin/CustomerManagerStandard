@@ -108,16 +108,16 @@ describe('customersController Tests', function () {
 
     it('should switch to card view', function () {
         var ctrl = createController();
-        $scope.changeView($scope.ViewEnum.Card);
+        $scope.changeDisplayMode($scope.DisplayModeEnum.Card);
         $scope.$apply();
-        expect($scope.listViewEnabled).toBe(false);
+        expect($scope.listDisplayModeEnabled).toBe(false);
     });
 
     it('should switch to list view', function () {
         var ctrl = createController();
-        $scope.changeView($scope.ViewEnum.List);
+        $scope.changeDisplayMode($scope.DisplayModeEnum.List);
         $scope.$apply();
-        expect($scope.listViewEnabled).toBe(true);
+        expect($scope.listDisplayModeEnabled).toBe(true);
     });
 
     describe('customersController Filtering Tests', function () {
