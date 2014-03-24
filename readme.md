@@ -56,7 +56,7 @@ Start the Node/Express server:
 
 * Open a command prompt
 * Navigate to the CustomerManager directory
-* Run 'npm init' at the command prompt
+* Run 'npm install' at the command prompt
 * Navigate to the CustomerManager/server directory
 * Run 'node server.js'
 
