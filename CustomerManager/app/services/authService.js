@@ -15,6 +15,7 @@
                 function (results) {
                     var loggedIn = results.data.status;
                     changeAuth(loggedIn);
+                    return loggedIn;
                 });
         };
 
