@@ -1,7 +1,5 @@
 ﻿(function () {
 
-    var app = angular.module('customersApp');
-
     var authFactory = function ($http, $q, $rootScope) {
         var serviceBase = '/api/dataservice/',
             factory = {
@@ -15,7 +13,7 @@
         factory.login = function (email, password) {
             return $http.post(serviceBase + 'login', { userLogin: { userName: email, password: password } }).then(
                 function (results) {
-                    var loggedIn = results.data.status;;
+                    var loggedIn = results.data.status;
                     changeAuth(loggedIn);
                 });
         };
@@ -42,7 +40,7 @@
 
     authFactory.$inject = ['$http', '$q', '$rootScope'];
 
-    app.factory('authService', authFactory);
+    angular.module('customersApp').factory('authService', authFactory);
 
 }());
 
