@@ -91,7 +91,7 @@ namespace CustomerManager.Repository
             var opStatus = new OperationStatus { Status = true };
             try
             {
-                //customer.State.Id = customer.StateId;
+                customer.State.Id = customer.StateId;
                 _Context.Customers.Attach(customer);
                 _Context.Entry<Customer>(customer).State = System.Data.Entity.EntityState.Modified;
                 _Context.SaveChanges();

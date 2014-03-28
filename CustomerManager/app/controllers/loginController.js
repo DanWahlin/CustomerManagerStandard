@@ -5,6 +5,7 @@
         $scope.email = null;
         $scope.password = null;
         $scope.errorMessage = null;
+        $scope.isEmailValid = true;
 
         $scope.login = function () {
             authService.login($scope.email, $scope.password).then(function (status) {

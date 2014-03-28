@@ -23,7 +23,7 @@
                 function init() {
                     wireUpHttpInterceptor();
                     if (window.jQuery) wirejQueryInterceptor();
-                    overlayContainer = document.getElementById('overlay-container');
+                    overlayContainer = element[0].firstChild; //Get to template
                 }
 
                 //Hook into httpInterceptor factory request/response/responseError functions                

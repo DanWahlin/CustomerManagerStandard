@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var value = {
-        useBreeze: false
+        useBreeze: true
     };
 
     angular.module('customersApp').value('config', value);
