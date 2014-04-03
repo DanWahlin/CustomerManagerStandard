@@ -46,10 +46,10 @@
             if (next && next.$$route && next.$$route.secure) {
                 if (!authService.user.isAuthenticated) {
                     authService.redirectToLogin();
-                    
                 }
             }
         });
 
         }]);
 }());
+

@@ -17,19 +17,25 @@
             getCustomers();
         };
 
+        $scope.searchTextChanged = function () {
+            filterCustomersProducts($scope.searchText);
+        };
+
         function init() {
-            createWatches();
+            //createWatches();
             getCustomers();
         }
 
-        function createWatches() {
-            //Watch searchText value and pass it and the customers to nameCityStateFilter
-            //Doing this instead of adding the filter to ng-repeat allows it to only be run once (rather than twice)
-            //while also accessing the filtered count via $scope.filteredCount above
-            $scope.$watch("searchText", function (filterText) {
-                filterCustomersProducts(filterText);
-            });
-        }
+        //function createWatches() {
+        //    //Watch searchText value and pass it and the customers to nameCityStateFilter
+        //    //Doing this instead of adding the filter to ng-repeat allows it to only be run once (rather than twice)
+        //    //while also accessing the filtered count via $scope.filteredCount above
+
+        //    //Better to handle this using ng-change on <input>. See searchTextChanged() function.
+        //    $scope.$watch("searchText", function (filterText) {
+        //        filterCustomersProducts(filterText);
+        //    });
+        //}
 
         function filterCustomersProducts(filterText) {
             $scope.filteredCustomers = $filter("nameProductFilter")($scope.customers, filterText);
@@ -53,3 +59,6 @@
     angular.module('customersApp').controller('OrdersController', OrdersController);
 
 }());
+
+
+

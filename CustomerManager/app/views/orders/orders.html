@@ -9,7 +9,9 @@
                 <div class="form-group">
                     <label class="navbarText col-sm-2">Filter by Name/Product:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control novalidate" data-ng-model="searchText" />
+                    <input type="text" class="form-control novalidate" 
+                            data-ng-model="searchText" 
+                            data-ng-change="searchTextChanged();" />
                     </div>
                 </div>
             </form>
@@ -44,3 +46,4 @@
     </div>
     <br /><br /><br />
 </div>
+
