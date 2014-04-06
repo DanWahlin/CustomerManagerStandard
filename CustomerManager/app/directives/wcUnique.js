@@ -1,13 +1,13 @@
 ﻿(function () {
 
-    var wcUniqueDirective = function (dataService) {
+    var wcUniqueDirective = function ($parse, dataService) {
         return {
             restrict: 'A',
             require: 'ngModel',
             link: function (scope, element, attrs, ngModel) {
                 element.bind('blur', function (e) {
                     if (!ngModel || !element.val()) return;
-                    var keyProperty = scope.$eval(attrs.wcUnique);
+                    var keyProperty = $parse(attrs.wcUnique)();
                     var currentValue = element.val();
                     dataService.checkUniqueValue(keyProperty.key, keyProperty.property, currentValue)
                         .then(function (unique) {
@@ -26,6 +26,8 @@
         };
     };
 
-    angular.module('customersApp').directive('wcUnique', ['dataService', wcUniqueDirective]);
+    wcUniqueDirective.$inject = ['$parse', 'dataService'];
+
+    angular.module('customersApp').directive('wcUnique', wcUniqueDirective);
 
 }());
