@@ -2,5 +2,7 @@ bin
 obj
 *.suo
 packages
+node_modules/
 *.mdf
 *.ldf
+*.iml
