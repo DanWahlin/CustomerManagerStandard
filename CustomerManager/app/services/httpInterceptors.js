@@ -26,7 +26,7 @@
 
         httpInterceptor401.$inject = ['$q', '$rootScope'];
 
-        $httpProvider.responseInterceptors.push(httpInterceptor401);
+        $httpProvider.interceptors.push(httpInterceptor401);
 
     }]);
 

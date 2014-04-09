@@ -23,6 +23,7 @@
 
         function redirectToLogin() {
             var path = '/login' + $location.$$path;
+            $location.replace();
             $location.path(path);
         }
 

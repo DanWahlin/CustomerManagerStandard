@@ -134,28 +134,24 @@
                 }();
             }
         };
-    },
-
-    httpProvider = function ($httpProvider) {
-        $httpProvider.interceptors.push('httpInterceptor');
-    },
-
-    httpInterceptor = function () {
-        return {};
     };
 
     var wcDirectivesApp = angular.module('wc.directives', []);
 
-//Empty factory to hook into $httpProvider.interceptors
-//Directive will hookup request, response, and responseError interceptors
-wcDirectivesApp.factory('httpInterceptor', httpInterceptor);
+    //Empty factory to hook into $httpProvider.interceptors
+    //Directive will hookup request, response, and responseError interceptors
+    wcDirectivesApp.factory('httpInterceptor', function () {
+        return {};
+    });
 
-//Hook httpInterceptor factory into the $httpProvider interceptors so that we can monitor XHR calls
-wcDirectivesApp.config(['$httpProvider', httpProvider]);
+    //Hook httpInterceptor factory into the $httpProvider interceptors so that we can monitor XHR calls
+    wcDirectivesApp.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.interceptors.push('httpInterceptor');
+    }]);
 
-//Directive that uses the httpInterceptor factory above to monitor XHR calls
-//When a call is made it displays an overlay and a content area 
-//No attempt has been made at this point to test on older browsers
-wcDirectivesApp.directive('wcOverlay', ['$q', '$timeout', '$window', 'httpInterceptor', wcOverlayDirective]);
+    //Directive that uses the httpInterceptor factory above to monitor XHR calls
+    //When a call is made it displays an overlay and a content area 
+    //No attempt has been made at this point to test on older browsers
+    wcDirectivesApp.directive('wcOverlay', ['$q', '$timeout', '$window', 'httpInterceptor', wcOverlayDirective]);
 
 }());
