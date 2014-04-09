@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var app = angular.module('customersApp',
-        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular.q']);
+        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular.q', 'autoActive']);
 
     app.config(['$routeProvider', function ($routeProvider) {
 

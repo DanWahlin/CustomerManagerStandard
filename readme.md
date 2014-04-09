@@ -46,11 +46,10 @@ In the CustomerManager directory execute 'npm install' to install Express, Mongo
 Load sample data into MongoDB by performing the following steps:
 
 * Execute 'mongod' to start the MongoDB daemon
-* Navigate to the CustomerManager/server directory (the one that has initMongoData.js in it)
-* Execute 'mongo' to start the MongoDB shell
-* Enter the following in the mongo shell to load the data seed file:
- * use customermanager
- * load("initMongoData.js")
+* Navigate to the CustomerManager/server directory
+* Run the initMongoData script:
+ * Windows: doubleclick on initMongoData.bat
+ * Mac/Linux: run/doubleclick initMongoData.sh
 
 Start the Node/Express server:
 

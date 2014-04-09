@@ -25,12 +25,11 @@
                 </a>
             </div>
             <div class="nav-container" data-collapse="isCollapsed">
-                <ul class="nav navbar-nav nav-pills navBarPadding">
-                    <li data-ng-class="{'active':highlight('/customers')}"><a href="#/customers">Customers</a></li>
-                    <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Orders</a></li>
-                    <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
-                    <li data-ng-class="{'active':highlight('/login')}" id="nav-login"
-                        data-ng-click="loginOrOut()">
+                <ul class="nav navbar-nav nav-pills navBarPadding" auto-active>
+                    <li><a href="#/customers">Customers</a></li>
+                    <li><a href="#/orders">Orders</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li id="nav-login" data-ng-click="loginOrOut()">
                         <a href="javascript:void(0);">{{ loginLogoutText }}</a>
                     </li>
                 </ul>
@@ -68,6 +67,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.min.js"></script>
     <script src="/Scripts/angular-ui-bootstrap.js"></script>
     <script src="/Scripts/tweenMax.min.js"></script>
+    <script src="/Scripts/autoActive.min.js"></script>
 
     <!-- jQuery only needed with Breeze so not loaded before AngularJS in this example-->
     <!-- If you want jQuery to replace jqlite in AngularJS then load jQuery before angular.js (not needed in this app though) -->
