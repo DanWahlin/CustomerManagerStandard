@@ -40,7 +40,7 @@
         return factory;
     };
 
-    authFactory.$inject = ['$http', '$q', '$rootScope'];
+    authFactory.$inject = ['$http', '$rootScope'];
 
     angular.module('customersApp').factory('authService', authFactory);
 
