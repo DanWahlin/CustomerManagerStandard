@@ -173,6 +173,7 @@ describe('customersController Tests', function () {
         function doFilter(data) {
             $scope.searchText = data.filter;
             $scope.$apply();
+            $scope.searchTextChanged();
             expect($scope.filteredCustomers).not.toBe([]);
             expect($scope.filteredCount).toEqual(data.expectedCount);
         }
