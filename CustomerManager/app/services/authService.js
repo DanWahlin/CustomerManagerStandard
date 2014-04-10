@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var authFactory = function ($http, $q, $rootScope) {
+    var authFactory = function ($http, $rootScope) {
         var serviceBase = '/api/dataservice/',
             factory = {
                 loginPath: '/login',
