@@ -4,32 +4,33 @@
         ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular.q']);
 
     app.config(['$routeProvider', function ($routeProvider) {
+        var viewBase = '/app/customersApp/views/';
 
         $routeProvider
             .when('/customers', {
                 controller: 'CustomersController',
-                templateUrl: '/app/views/customers/customers.html'
+                templateUrl: viewBase + 'customers/customers.html'
             })
             .when('/customerorders/:customerId', {
                 controller: 'CustomerOrdersController',
-                templateUrl: '/app/views/customers/customerOrders.html'
+                templateUrl: viewBase + 'customers/customerOrders.html'
             })
             .when('/customeredit/:customerId', {
                 controller: 'CustomerEditController',
-                templateUrl: '/app/views/customers/customerEdit.html',
+                templateUrl: viewBase + 'customers/customerEdit.html',
                 secure: true //This route requires an authenticated user
             })
             .when('/orders', {
                 controller: 'OrdersController',
-                templateUrl: '/app/views/orders/orders.html'
+                templateUrl: viewBase + 'orders/orders.html'
             })
             .when('/about', {
                 controller: 'AboutController',
-                templateUrl: '/app/views/about.html'
+                templateUrl: viewBase + 'about.html'
             })
             .when('/login/:redirect*', {
                 controller: 'LoginController',
-                templateUrl: '/app/views/login.html'
+                templateUrl: viewBase + 'login.html'
             })
             .otherwise({ redirectTo: '/customers' });
 

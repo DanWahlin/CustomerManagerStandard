@@ -11,7 +11,7 @@ module.exports = function (config) {
 
             //App and test scripts
             'test/helpers/*.js',
-            'app/app.js',           //Ensure main startup script is loaded first
+            'app/customersApp/app.js',           //Ensure main startup script is loaded first
             'app/**/*.js',
             'test/unit/*.js'
         ],
