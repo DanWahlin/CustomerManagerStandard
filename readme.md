@@ -23,7 +23,7 @@ The factories can be switched by changing the app/services/config useBreeze sett
 
 The AngularJS portion of the app is structured using the following folders:
 
-![Customer Management App Structure](https://raw2.github.com/DanWahlin/CustomerManagerStandard/master/CustomerManager/Content/images/appFolders.png)
+![Customer Management App Structure](https://raw.githubusercontent.com/DanWahlin/CustomerManagerStandard/master/CustomerManager/Content/images/appFolders.png)
 
 ## Requirements:
 
