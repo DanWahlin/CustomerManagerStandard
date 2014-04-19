@@ -25,15 +25,29 @@
                 </a>
             </div>
             <div class="nav-container" data-collapse="isCollapsed">
-                <ul class="nav navbar-nav nav-pills navBarPadding">
+
+                <!-- With menu-highlighter directive -->
+                <ul class="nav navbar-nav nav-pills navBarPadding"
+                    data-menu-highlighter data-highlight-class-name="active">
+                    <li><a href="#/customers">Customers</a></li>
+                    <li><a href="#/orders">Orders</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li id="nav-login" data-ng-click="loginOrOut()">
+                        <!-- href note used but needed to compare against path in menu-highlighter -->
+                        <a data-href="#/login">{{ loginLogoutText }}</a>
+                    </li>
+                </ul>
+
+                <!-- Without menu-highlighter directive -->
+                <!--<ul class="nav navbar-nav nav-pills navBarPadding">
                     <li data-ng-class="{'active':highlight('/customers')}"><a href="#/customers">Customers</a></li>
                     <li data-ng-class="{'active':highlight('/orders')}"><a href="#/orders">Orders</a></li>
                     <li data-ng-class="{'active':highlight('/about')}"><a href="#/about">About</a></li>
                     <li data-ng-class="{'active':highlight('/login')}" id="nav-login"
                         data-ng-click="loginOrOut()">
-                        <a href="javascript:void(0);">{{ loginLogoutText }}</a>
+                        <a>{{ loginLogoutText }}</a>
                     </li>
-                </ul>
+                </ul>-->
             </div>
         </nav>
     </header>
@@ -77,6 +91,7 @@
 
     <!-- Custom scripts -->
     <script src="/app/wc.directives/directives/wcOverlay.js"></script>
+    <script src="/app/wc.directives/directives/menuHighlighter.js"></script>
     <script src="/app/customersApp/app.js"></script>
     <script src="/app/customersApp/animations/listAnimations.js"></script>
     <script src="/app/customersApp/directives/wcUnique.js"></script>
@@ -97,6 +112,7 @@
     <script src="/app/customersApp/controllers/aboutController.js"></script>
     <script src="/app/customersApp/controllers/navbarController.js"></script>
     <script src="/app/customersApp/controllers/loginController.js"></script>
+
 </body>
 </html>
 

@@ -144,6 +144,7 @@
     <Content Include="app\customersApp\services\customersBreezeService.js" />
     <Content Include="app\customersApp\services\customersService.js" />
     <Content Include="app\customersApp\services\dataService.js" />
+    <Content Include="app\wc.directives\directives\menuHighlighter.js" />
     <Content Include="app\wc.directives\directives\wcOverlay.js" />
     <Content Include="Content\animations.css" />
     <Content Include="Content\bootstrap.css" />
@@ -216,6 +217,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="server\initMongoDB.bat" />
+    <Content Include="server\initMongoDB.sh" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

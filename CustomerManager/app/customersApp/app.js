@@ -28,7 +28,7 @@
                 controller: 'AboutController',
                 templateUrl: viewBase + 'about.html'
             })
-            .when('/login/:redirect*', {
+            .when('/login/:redirect*?', {
                 controller: 'LoginController',
                 templateUrl: viewBase + 'login.html'
             })
