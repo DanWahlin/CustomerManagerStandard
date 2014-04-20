@@ -32,7 +32,7 @@
                             var basePath = path.substr(0, trimmedHref.length);
                             
                             //See if trimmedHref and basePath match. If so, then highlight that item
-                            if (trimmedHref == basePath) {
+                            if (trimmedHref === basePath) {
                                 angular.element(li).addClass(className);
                             } else {
                                 angular.element(li).removeClass(className);
