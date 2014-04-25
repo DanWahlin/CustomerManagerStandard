@@ -6,7 +6,7 @@
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '/app/partials/modal.html'
+            templateUrl: '/app/customersApp/partials/modal.html'
         };
 
         var modalOptions = {
