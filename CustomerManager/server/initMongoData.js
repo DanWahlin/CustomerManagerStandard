@@ -104,7 +104,7 @@ var orders =
   { "product": "Bat", "price": 19.99, "quantity": 1 }
 ];
 
-db.customers.remove();
+db.customers.remove({});
 
 
 var l = customerNames.length,
@@ -162,7 +162,7 @@ for (i = 0; i < l; i++) {
 
 
 //Settings
-db.settings.remove();
+db.settings.remove({});
 var r = { 'nextSeqNumber': 24, 'collectionName': "customers" };
 db.settings.insert(r);
 
@@ -223,7 +223,7 @@ var states = [
 var l = states.length,
     i;
 
-db.states.remove();
+db.states.remove({});
 
 for (i = 0; i < l; i++) {
     var r = { 'id': i + 1, 'name': states[i].name, 'abbreviation': states[i].abbreviation };

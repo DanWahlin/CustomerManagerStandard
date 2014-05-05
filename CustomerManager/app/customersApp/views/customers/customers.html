@@ -24,7 +24,7 @@
         </div>
         <div class="container">
             <div class="row cardContainer show-hide-animation" data-ng-hide="listDisplayModeEnabled">
-                <div class="col-sm-1 col-md-3 card-animation"
+                <div class="col-sm-6 col-md-3 card-animation"
                      data-ng-repeat="customer in filteredCustomers | orderBy:'lastName'">
                     <div class="card">
                         <button class="btn close cardClose" title="Delete Customer" data-ng-click="deleteCustomer(customer.id)">&times;</button>

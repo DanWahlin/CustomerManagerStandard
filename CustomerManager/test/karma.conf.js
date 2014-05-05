@@ -9,10 +9,12 @@ module.exports = function (config) {
             'test/lib/*.js',
             'Scripts/**/*.js',
 
-            //App and test scripts
+            //App and test scripts (order matters!)
             'test/helpers/*.js',
-            'app/customersApp/app.js',           //Ensure main startup script is loaded first
-            'app/**/*.js',
+            'app/wc.directives/directives/wcOverlay.js',
+            'app/wc.directives/directives/menuHighlighter.js',
+            'app/customersApp/app.js', 
+            'app/customersApp/**/*.js',
             'test/unit/*.js'
         ],
         autoWatch: true,
