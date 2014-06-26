@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var CustomersController = function ($scope, $location, $filter, $window,
-        authService, dataService, modalService) {
+        $timeout, authService, dataService, modalService) {
 
         $scope.customers = [];
         $scope.filteredCustomers = [];
@@ -9,6 +9,7 @@
         $scope.orderby = 'lastName';
         $scope.reverse = false;
         $scope.searchText = null;
+        $scope.cardAnimationClass = 'card-animation';
 
         //paging
         $scope.totalRecords = 0;
@@ -106,6 +107,11 @@
                 $scope.totalRecords = data.totalRecords;
                 $scope.customers = data.results;
                 filterCustomers(''); //Trigger initial filter
+
+                $timeout(function () {
+                    $scope.cardAnimationClass = ''; //Turn off animation since it won't keep up with filtering
+                }, 1000);
+
             }, function (error) {
                 $window.alert('Sorry, an error occurred: ' + error.data.message);
             });
@@ -129,7 +135,7 @@
         init();
     };
 
-    CustomersController.$inject = ['$scope', '$location', '$filter', '$window', 'authService', 'dataService', 'modalService'];
+    CustomersController.$inject = ['$scope', '$location', '$filter', '$window', '$timeout', 'authService', 'dataService', 'modalService'];
 
     angular.module('customersApp').controller('CustomersController', CustomersController);
 

@@ -4,11 +4,11 @@
 }
 
 .slide-animation.ng-enter, .slide-animation.ng-leave {
-    -webkit-transition: 0.5s linear all;
     -moz-transition: 0.5s linear all;
     -o-transition: 0.5s linear all;
+    -webkit-transition: 0.5s linear all;
     transition: 0.5s linear all;
-    position:relative;
+    position: relative;
     /*top: 0;
     left: 0;
     right: 0;*/
