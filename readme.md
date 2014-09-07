@@ -32,6 +32,8 @@ The AngularJS portion of the app is structured using the following folders:
 
 ![Customer Management App Structure](CustomerManager/Content/images/appFolders.png)
 
+A related example that ties into Azure Active Directory Services and Office 365/SharePoint can be found [here](https://github.com/OfficeDev/SP-AngularJS-ExpenseManager-Code-Sample).
+
 ## Requirements:
 
 ###If you're using Visual Studio and .NET:
