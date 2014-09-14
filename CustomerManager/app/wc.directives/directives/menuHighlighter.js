@@ -9,6 +9,8 @@
 
 (function () {
 
+    var injectParams = ['$location'];
+
     var menuHighlighter = function ($location) {
         return {
             restrict: 'A',
@@ -49,7 +51,7 @@
         }
     }
 
-    menuHighlighter.$inject = ['$location'];
+    menuHighlighter.$inject = injectParams;
 
     angular.module('wc.directives').directive('menuHighlighter', menuHighlighter);
 

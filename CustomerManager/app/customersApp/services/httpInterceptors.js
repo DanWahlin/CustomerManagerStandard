@@ -3,6 +3,8 @@
     angular.module('customersApp')
         .config(['$httpProvider', function ($httpProvider) {
 
+        var injectParams = ['$q', '$rootScope'];
+
         var httpInterceptor401 = function ($q, $rootScope) {
 
             var success = function (response) {
@@ -24,7 +26,7 @@
 
         };
 
-        httpInterceptor401.$inject = ['$q', '$rootScope'];
+        httpInterceptor401.$inject = injectParams;
 
         $httpProvider.interceptors.push(httpInterceptor401);
 

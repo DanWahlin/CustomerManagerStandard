@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$modal'];
+
     var modalService = function ($modal) {
 
         var modalDefaults = {
@@ -51,6 +53,8 @@
         };
     };
 
-    angular.module('customersApp').service('modalService', ['$modal', modalService]);
+    modalService.$inject = injectParams;
+
+    angular.module('customersApp').service('modalService', modalService);
 
 }());

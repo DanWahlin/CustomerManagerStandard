@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$scope', '$location', '$routeParams', 'authService'];
+
     var LoginController = function ($scope, $location, $routeParams, authService) {
         var path = '/';
         $scope.email = null;
@@ -25,7 +27,7 @@
         };
     };
 
-    LoginController.$inject = ['$scope', '$location', '$routeParams', 'authService'];
+    LoginController.$inject = injectParams;
 
     angular.module('customersApp')
         .controller('LoginController', LoginController);

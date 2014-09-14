@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$parse', 'dataService'];
+
     var wcUniqueDirective = function ($parse, dataService) {
         return {
             restrict: 'A',
@@ -26,7 +28,7 @@
         };
     };
 
-    wcUniqueDirective.$inject = ['$parse', 'dataService'];
+    wcUniqueDirective.$inject = injectParams;
 
     angular.module('customersApp').directive('wcUnique', wcUniqueDirective);
 

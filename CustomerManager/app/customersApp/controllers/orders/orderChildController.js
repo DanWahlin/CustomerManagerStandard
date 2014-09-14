@@ -1,5 +1,7 @@
 ﻿(function() {
 
+    var injectParams = ['$scope'];
+
     var OrderChildController = function ($scope) {
         $scope.orderby = 'product';
         $scope.reverse = false;
@@ -28,7 +30,7 @@
         }
     };
 
-    OrderChildController.$inject = ['$scope'];
+    OrderChildController.$inject = injectParams;
 
     angular.module('customersApp').controller('OrderChildController', OrderChildController);
 

@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$q', '$window'];
+
     var customersBreezeService = function ($q, $window) {
 
         var factory = {};
@@ -171,7 +173,7 @@
         return factory;
     };
 
-    customersBreezeService.$inject = ['$q', '$window'];
+    customersBreezeService.$inject = injectParams;
 
     angular.module('customersApp')
         .factory('customersBreezeService', customersBreezeService);

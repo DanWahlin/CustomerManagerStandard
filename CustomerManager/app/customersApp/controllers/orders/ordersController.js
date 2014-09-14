@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$scope', '$filter', '$window', 'dataService'];
+
     var OrdersController = function ($scope, $filter, $window, dataService) {
         $scope.customers = [];
         $scope.filteredCustomers;
@@ -54,7 +56,7 @@
         }
     };
 
-    OrdersController.$inject = ['$scope', '$filter', '$window', 'dataService'];
+    OrdersController.$inject = injectParams;
 
     angular.module('customersApp').controller('OrdersController', OrdersController);
 

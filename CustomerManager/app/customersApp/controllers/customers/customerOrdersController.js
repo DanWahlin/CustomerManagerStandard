@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$scope', '$routeParams', '$window', 'dataService'];
+
     var CustomerOrdersController = function ($scope, $routeParams, $window, dataService) {
         //Grab customerId off of the route        
         var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0;
@@ -21,7 +23,7 @@
         }
     };
 
-    CustomerOrdersController.$inject = ['$scope', '$routeParams', '$window', 'dataService'];
+    CustomerOrdersController.$inject = injectParams;
 
     angular.module('customersApp').controller('CustomerOrdersController', CustomerOrdersController);
 

@@ -1,6 +1,10 @@
 ﻿(function () {
 
-    var CustomerEditController = function ($rootScope, $scope, $location, $routeParams, $timeout, config, dataService, modalService) {
+    var injectParams = ['$rootScope', '$scope', '$location', '$routeParams',
+                        '$timeout', 'config', 'dataService', 'modalService'];
+
+    var CustomerEditController = function ($rootScope, $scope, $location, $routeParams,
+                                           $timeout, config, dataService, modalService) {
 
         var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0,
             timer,
@@ -120,8 +124,7 @@
         }
     };
 
-    CustomerEditController.$inject = ['$rootScope', '$scope', '$location', '$routeParams',
-                                      '$timeout', 'config', 'dataService', 'modalService'];
+    CustomerEditController.$inject = injectParams;
 
     angular.module('customersApp').controller('CustomerEditController', CustomerEditController);
 

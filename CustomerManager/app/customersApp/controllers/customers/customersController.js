@@ -1,5 +1,8 @@
 ﻿(function () {
 
+    var injectParams = ['$scope', '$location', '$filter', '$window',
+                        '$timeout', 'authService', 'dataService', 'modalService'];
+
     var CustomersController = function ($scope, $location, $filter, $window,
         $timeout, authService, dataService, modalService) {
 
@@ -135,7 +138,7 @@
         init();
     };
 
-    CustomersController.$inject = ['$scope', '$location', '$filter', '$window', '$timeout', 'authService', 'dataService', 'modalService'];
+    CustomersController.$inject = injectParams;
 
     angular.module('customersApp').controller('CustomersController', CustomersController);
 

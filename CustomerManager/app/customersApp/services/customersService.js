@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$http', '$q'];
+
     var customersFactory = function ($http, $q) {
         var serviceBase = '/api/dataservice/',
             factory = {};
@@ -112,7 +114,7 @@
         return factory;
     };
 
-    customersFactory.$inject = ['$http', '$q'];
+    customersFactory.$inject = injectParams;
 
     angular.module('customersApp').factory('customersService', customersFactory);
 

@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var injectParams = ['$http', '$rootScope'];
+
     var authFactory = function ($http, $rootScope) {
         var serviceBase = '/api/dataservice/',
             factory = {
@@ -40,7 +42,7 @@
         return factory;
     };
 
-    authFactory.$inject = ['$http', '$rootScope'];
+    authFactory.$inject = injectParams;
 
     angular.module('customersApp').factory('authService', authFactory);
 
