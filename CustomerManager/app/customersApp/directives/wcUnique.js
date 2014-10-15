@@ -23,15 +23,15 @@
                                 deferred.resolve(); //It's unique
                             }
                             else {
+                                var model = ngModel;
                                 deferred.reject(); //Add unique to $errors
                             }
                         });
+                        return deferred.promise;
                     }
                     else {
-                        deferred.resolve();
+                        return $q.when(true);
                     }
-
-                    return deferred.promise;
                 };
             }
         };
