@@ -5,7 +5,8 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         files: [
             //Library scripts
-            'test/lib/angular.js',  //Ensure Angular is loaded first
+            'test/lib/angular.js',  //Ensure Angular is loaded first,
+            'test/lib/breeze.min.js',  //Ensure Angular is loaded first
             'test/lib/*.js',
             'Scripts/**/*.js',
 

@@ -14,7 +14,10 @@
     beforeEach(function () {
         inject(function ($compile, $rootScope, $q, customersService) {
             scope = $rootScope.$new();
-            input = angular.element('<input type="text" name="email" data-ng-model="customer.email" data-wc-unique="{key: customer.id, property: \'email\'}" />');
+            input = angular.element('<input type="text" name="email" class="form-control" data-ng-model="customer.email" ' +
+                                    'data-ng-model-options="{ updateOn: \'blur\' }" ' +
+                                    'data-wc-unique  data-wc-unique-key="{{customer.id}}"  data-wc-unique-property="email"  ' +
+                                    'data-ng-minlength="3" required />');
             element = angular.element('<form name="editForm"></form>');
             element.append(input);
 
@@ -50,33 +53,41 @@
         });
     });
 
-    it('Should be valid initially', function () {
-        expect(form.email.$valid).toBe(true);
+    it('Should be invalid initially due to minlength', function () {
+        expect(form.email.$valid).toBe(false);
     });
 
     it('Should call checkUniqueValue when value is entered in the input field', function () {
-        changeInputValueTo(compiledForm.find('input'), "abc@def.com");
+        scope.$evalAsync(function () {
+            changeInputValueTo(compiledForm.find('input'), "abc@def.com");
 
-        expect(customerSvcMock.checkUniqueValue).toHaveBeenCalled();
+            expect(customerSvcMock.checkUniqueValue).toHaveBeenCalled();
+        });
     });
 
     it('Unique validator should be invalid if the email ID is abc@def.com', function () {
-        changeInputValueTo(compiledForm.find('input'), "abc@def.com");
+        scope.$evalAsync(function () {
+            changeInputValueTo(compiledForm.find('input'), "abc@def.com");
 
-        expect(form.email.$valid).toBe(false);
-        expect(form.email.$error.unique).toBe(true);
+            expect(form.email.$valid).toBe(false);
+            expect(form.email.$error.unique).toBe(true);
+        });
     });
 
     it('Unique validator should be valid if the email ID is someone@gmail.com', function () {
-        changeInputValueTo(compiledForm.find('input'), "someone@gmail.com");
+        scope.$evalAsync(function () {
+            changeInputValueTo(compiledForm.find('input'), "someone@gmail.com");
 
-        expect(form.email.$error.unique).toBe(false);
+            expect(form.email.$error.unique).toBe(false);
+        });
     });
 
     it('Unique validator should be valid if the server fails to respond', function () {
-        passPromise = false;
-        changeInputValueTo(compiledForm.find('input'), "someone@gmail.com");
+        scope.$evalAsync(function () {
+            passPromise = false;
+            changeInputValueTo(compiledForm.find('input'), "someone@gmail.com");
 
-        expect(form.email.$error.unique).toBe(false);
+            expect(form.email.$error.unique).toBe(false);
+        });
     });
 });

@@ -191,6 +191,8 @@
     <Content Include="test\lib\angular-mocks.js" />
     <Content Include="test\lib\angular-route.js" />
     <Content Include="test\lib\angular.js" />
+    <Content Include="test\lib\breeze.angular.js" />
+    <Content Include="test\lib\breeze.min.js" />
     <Content Include="test\unit\customersControllerSpec.js" />
     <Content Include="test\unit\customersServiceSpec.js" />
     <Content Include="test\unit\dataServiceSpec.js" />
