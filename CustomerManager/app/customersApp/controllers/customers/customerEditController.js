@@ -1,9 +1,9 @@
 ﻿(function () {
 
-    var injectParams = ['$rootScope', '$scope', '$location', '$routeParams',
+    var injectParams = ['$scope', '$location', '$routeParams',
                         '$timeout', 'config', 'dataService', 'modalService'];
 
-    var CustomerEditController = function ($rootScope, $scope, $location, $routeParams,
+    var CustomerEditController = function ($scope, $location, $routeParams,
                                            $timeout, config, dataService, modalService) {
 
         var customerId = ($routeParams.customerId) ? parseInt($routeParams.customerId) : 0,
@@ -69,10 +69,10 @@
             //Make sure they're warned if they made a change but didn't save it
             //Call to $on returns a "deregistration" function that can be called to
             //remove the listener (see routeChange() for an example of using it)
-            onRouteChangeOff = $rootScope.$on('$locationChangeStart', routeChange);
+            onRouteChangeOff = $scope.$on('$locationChangeStart', routeChange);
         }
 
-        function routeChange(event, newUrl) {
+        function routeChange(event, newUrl, oldUrl) {
             //Navigate to newUrl if the form isn't dirty
             if (!$scope.editForm || !$scope.editForm.$dirty) return;
 
@@ -86,7 +86,7 @@
             modalService.showModal({}, modalOptions).then(function (result) {
                 if (result === 'ok') {
                     onRouteChangeOff(); //Stop listening for location changes
-                    $location.path(newUrl); //Go to page they're interested in
+                    $location.path($location.url(newUrl).hash()); //Go to page they're interested in
                 }
             });
 
