@@ -7,15 +7,30 @@
             <div class="col-md-10">
                 <div class="navbar">
                     <ul class="nav navbar-nav">
-                        <li data-ng-class="{active: !listDisplayModeEnabled}" class="toolbaritem"><a data-ng-click="changeDisplayMode(DisplayModeEnum.Card)"><span class="glyphicon glyphicon-th-large"></span> Card View</a></li>
-                        <li data-ng-class="{active: listDisplayModeEnabled}" class="toolbaritem"><a data-ng-click="changeDisplayMode(DisplayModeEnum.List)"><span class="glyphicon glyphicon-align-justify"></span> List View</a></li>
-                        <li class="toolbaritem"><a data-ng-click="navigate('/customeredit/0')"><span class="glyphicon glyphicon-plus"></span> Add Customer</a></li>
+                        <li data-ng-class="{active: !listDisplayModeEnabled}" class="toolbaritem">
+                            <a data-ng-click="changeDisplayMode(DisplayModeEnum.Card)">
+                                <span class="glyphicon glyphicon-th-large"></span> Card View
+                            </a>
+                        </li>
+                        <li data-ng-class="{active: listDisplayModeEnabled}" class="toolbaritem">
+                            <a data-ng-click="changeDisplayMode(DisplayModeEnum.List)">
+                                <span class="glyphicon glyphicon-align-justify"></span> List View
+                            </a>
+                        </li>
+                        <li class="toolbaritem">
+                            <a data-ng-click="navigate('/customeredit/0')">
+                                <span class="glyphicon glyphicon-plus"></span> Add Customer
+                            </a>
+                        </li>
                     </ul>
                     <form class="navbar-form navbar-right">
                         <div class="form-group">
                             <label class="navbarText col-sm-2">Filter:</label>
                             <div class="col-sm-10">
-                                <input type="text" data-ng-model="searchText" data-ng-change="searchTextChanged();" class="novalidate form-control" />
+                                <input type="text" 
+                                       data-ng-model="searchText" 
+                                       data-ng-change="searchTextChanged();" 
+                                       class="novalidate form-control" />
                             </div>
                         </div>
                     </form>
@@ -94,12 +109,12 @@
         <div class="row show-hide-animation" data-ng-show="customers.length > 0">
             <div class="col-md-12">
                 <div data-pagination
-                     data-on-select-page="pageChanged(page)"
-                     data-total-items="totalRecords"
-                     data-page="currentPage"
-                     data-items-per-page="pageSize"
-                     data-boundary-links="true"
-                     class="pagination-sm"></div>
+                        data-on-select-page="pageChanged(page)"
+                        data-total-items="totalRecords"
+                        data-page="currentPage"
+                        data-items-per-page="pageSize"
+                        data-boundary-links="true"
+                        class="pagination-sm"></div>
                 <h5>Showing {{ filteredCount }} of {{ totalRecords}} total customers</h5>
             </div>
         </div>

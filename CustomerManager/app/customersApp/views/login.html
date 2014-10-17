@@ -23,9 +23,9 @@
                     </div>
                     <div class="col-md-10">
                         <input type="password" name="password" class="form-control" 
-                               data-ng-model="password" 
-                               data-ng-minlength="6"
-                               required />
+                                data-ng-model="password" 
+                                data-ng-minlength="6"
+                                required />
                         <span class="errorMessage" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
                             Password is required
                         </span>
@@ -34,7 +34,11 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary" data-ng-click="login()" ng-disabled="loginForm.$invalid || !loginForm.$dirty">Login</button>
+                        <button type="submit" class="btn btn-primary"
+                                data-ng-click="login()"
+                                ng-disabled="loginForm.$invalid || !loginForm.$dirty">
+                            Login
+                        </button>
                     </div>
                 </div>
                 <br />
