@@ -1,8 +1,8 @@
 ﻿(function () {
 
-    var injectParams = ['$q', '$parse', 'dataService'];
+    var injectParams = ['$q', 'dataService'];
 
-    var wcUniqueDirective = function ($q, $parse, dataService) {
+    var wcUniqueDirective = function ($q, dataService) {
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -23,7 +23,6 @@
                                 deferred.resolve(); //It's unique
                             }
                             else {
-                                var model = ngModel;
                                 deferred.reject(); //Add unique to $errors
                             }
                         });
