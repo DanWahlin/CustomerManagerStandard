@@ -12,7 +12,7 @@
         $scope.orderby = 'lastName';
         $scope.reverse = false;
         $scope.searchText = null;
-        $scope.cardAnimationClass = 'card-animation';
+        $scope.cardAnimationClass = '.card-animation';
 
         //paging
         $scope.totalRecords = 0;
