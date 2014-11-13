@@ -31,7 +31,7 @@
             var query = EntityQuery
                 .from('Customers')
                 .where('id', '==', id)
-                .expand('Orders, State');
+                .expand('orders, state');
             return executeQuery(query, true);
         };
 

@@ -65,10 +65,12 @@
                         Email:
                     </div>
                     <div class="col-md-10">
-                        <input type="text" name="email" 
+                        <!-- allowInvalid added below so that the model isn't wiped
+                        out (the default behavior) if email is determined to be invalid due to being a duplicate-->
+                        <input type="text" name="email"
                                 class="form-control"
                                 data-ng-model="customer.email"
-                                data-ng-model-options="{ updateOn: 'blur' }"
+                                data-ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                                 data-wc-unique
                                 data-wc-unique-key="{{customer.id}}"
                                 data-wc-unique-property="email"
@@ -135,8 +137,10 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary" data-ng-click="saveCustomer()" 
-                                ng-disabled="editForm.$invalid || !editForm.$dirty">{{buttonText}}</button>
+                        <button type="submit" class="btn btn-primary" data-ng-click="saveCustomer()"
+                                ng-disabled="editForm.$invalid || !editForm.$dirty">
+                            {{buttonText}}
+                        </button>
                         &nbsp;&nbsp;
                         <button class="btn btn-danger" data-ng-if="customer.id > 0" data-ng-click="deleteCustomer()">Delete</button>
                     </div>
