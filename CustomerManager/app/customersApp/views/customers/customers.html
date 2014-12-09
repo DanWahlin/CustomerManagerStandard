@@ -79,7 +79,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-ng-repeat="customer in vm.filteredCustomers | orderBy:orderby:reverse" class="repeat-animation">
+                                <tr data-ng-repeat="customer in vm.filteredCustomers | orderBy:vm.orderby:vm.reverse" class="repeat-animation">
                                     <td><a href="#/customeredit/{{customer.id}}"><img data-ng-src="Content/images/{{customer.gender | lowercase}}.png" class="cardImage" alt="Customer Image" /></a></td>
                                     <td><a href="#/customeredit/{{customer.id}}">{{customer.firstName + ' ' + customer.lastName}}</a></td>
                                     <td>{{customer.city}}, {{customer.state.name}}</td>
