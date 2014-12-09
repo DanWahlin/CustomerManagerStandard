@@ -68,14 +68,14 @@ describe('customersController Tests', function () {
             //Create a re-useable way to create controllers that use different factories
             createController = function () {
                 return $controller('CustomersController', {
-                    $scope: $scope,
+                    //$scope: $scope, --> Not neede when controllerAs is used since the controller object will be the "as" - vm in this case.
                     dataService: fakeCustomersService
                 });
             };
 
             createBreezeController = function () {
                 return $controller('CustomersController', {
-                    $scope: $scope,
+                    //$scope: $scope, --> Not neede when controllerAs is used since the controller object will be the "as" - vm in this case.
                     dataService: fakeBreezeCustomersService
                 });
             };
@@ -83,99 +83,106 @@ describe('customersController Tests', function () {
     });
 
     it('should have 1 customer when using $http factory', function () {
-        var ctrl = createController();
+        var vm = createController();
         $scope.$apply(); //Ensure promises are resolved
-        expect($scope.customers.length).toEqual(1);
+        expect(vm.customers.length).toEqual(1);
     });
 
     it('should have 1 totalRecord when using $http factory', function () {
-        var ctrl = createController();
+        var vm = createController();
         $scope.$apply(); //Ensure promises are resolved
-        expect($scope.totalRecords).toEqual(1);
+        expect(vm.totalRecords).toEqual(1);
     });
 
     it('should have 1 customer when using Breeze factory', function () {
-        var ctrl = createBreezeController(); 
+        var vm = createBreezeController();
         $scope.$apply(); //Ensure promises are resolved
-        expect($scope.customers.length).toEqual(1);
+        expect(vm.customers.length).toEqual(1);
     });
 
     it('should have 1 totalRecord when using Breeze factory', function () {
-        var ctrl = createBreezeController();
+        var vm = createBreezeController();
         $scope.$apply(); //Ensure promises are resolved
-        expect($scope.totalRecords).toEqual(1);
+        expect(vm.totalRecords).toEqual(1);
     });
 
     it('should switch to card view', function () {
-        var ctrl = createController();
-        $scope.changeDisplayMode($scope.DisplayModeEnum.Card);
+        var vm = createController();
+        vm.changeDisplayMode(vm.DisplayModeEnum.Card);
         $scope.$apply();
-        expect($scope.listDisplayModeEnabled).toBe(false);
+        expect(vm.listDisplayModeEnabled).toBe(false);
     });
 
     it('should switch to list view', function () {
-        var ctrl = createController();
-        $scope.changeDisplayMode($scope.DisplayModeEnum.List);
+        var vm = createController();
+        vm.changeDisplayMode(vm.DisplayModeEnum.List);
         $scope.$apply();
-        expect($scope.listDisplayModeEnabled).toBe(true);
+        expect(vm.listDisplayModeEnabled).toBe(true);
     });
 
     describe('customersController Filtering Tests', function () {
 
         it('should return 1 filtered customer', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: '',
-                expectedCount: 1
+                expectedCount: 1,
+                controllerAs: vm
             });
         });
 
         it('should filter and return 0 customers', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: 'Foo',
-                expectedCount: 0
+                expectedCount: 0,
+                controllerAs: vm
             });
         });
 
         it('should filter by firstName and return 1 customer', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: 'Marcus',
-                expectedCount: 1
+                expectedCount: 1,
+                controllerAs: vm
             });
         });
 
         it('should filter by lastName and return 1 customer', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: 'HighTower',
-                expectedCount: 1
+                expectedCount: 1,
+                controllerAs: vm
             });
         });
 
         it('should filter by city and return 1 customer', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: 'Phoenix',
-                expectedCount: 1
+                expectedCount: 1,
+                controllerAs: vm
             });
         });
 
         it('should filter by state and return 1 customer', function () {
-            var ctrl = createController();
+            var vm = createController();
             doFilter({
                 filter: 'Arizona',
-                expectedCount: 1
+                expectedCount: 1,
+                controllerAs: vm
             });
         });
 
         function doFilter(data) {
-            $scope.searchText = data.filter;
+            var vm = data.controllerAs;
+            vm.searchText = data.filter;
             $scope.$apply();
-            $scope.searchTextChanged();
-            expect($scope.filteredCustomers).not.toBe([]);
-            expect($scope.filteredCount).toEqual(data.expectedCount);
+            vm.searchTextChanged();
+            expect(vm.filteredCustomers).not.toBe([]);
+            expect(vm.filteredCount).toEqual(data.expectedCount);
         }
     });
 

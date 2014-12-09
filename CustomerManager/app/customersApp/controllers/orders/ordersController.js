@@ -1,26 +1,28 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$filter', '$window', 'dataService'];
+    var injectParams = ['$filter', '$window', 'dataService'];
 
-    var OrdersController = function ($scope, $filter, $window, dataService) {
-        $scope.customers = [];
-        $scope.filteredCustomers;
-        $scope.filteredCount;
+    var OrdersController = function ($filter, $window, dataService) {
+        var vm = this;
+
+        vm.customers = [];
+        vm.filteredCustomers;
+        vm.filteredCount;
 
         //paging
-        $scope.totalRecords = 0;
-        $scope.pageSize = 10;
-        $scope.currentPage = 1;
+        vm.totalRecords = 0;
+        vm.pageSize = 10;
+        vm.currentPage = 1;
 
         init();
 
-        $scope.pageChanged = function (page) {
-            $scope.currentPage = page;
+        vm.pageChanged = function (page) {
+            vm.currentPage = page;
             getCustomers();
         };
 
-        $scope.searchTextChanged = function () {
-            filterCustomersProducts($scope.searchText);
+        vm.searchTextChanged = function () {
+            filterCustomersProducts(vm.searchText);
         };
 
         function init() {
@@ -31,7 +33,7 @@
         //function createWatches() {
         //    //Watch searchText value and pass it and the customers to nameCityStateFilter
         //    //Doing this instead of adding the filter to ng-repeat allows it to only be run once (rather than twice)
-        //    //while also accessing the filtered count via $scope.filteredCount above
+        //    //while also accessing the filtered count via vm.filteredCount above
 
         //    //Better to handle this using ng-change on <input>. See searchTextChanged() function.
         //    $scope.$watch("searchText", function (filterText) {
@@ -40,15 +42,15 @@
         //}
 
         function filterCustomersProducts(filterText) {
-            $scope.filteredCustomers = $filter("nameProductFilter")($scope.customers, filterText);
-            $scope.filteredCount = $scope.filteredCustomers.length;
+            vm.filteredCustomers = $filter("nameProductFilter")(vm.customers, filterText);
+            vm.filteredCount = vm.filteredCustomers.length;
         }
 
         function getCustomers() {
-            dataService.getCustomers($scope.currentPage - 1, $scope.pageSize)
+            dataService.getCustomers(vm.currentPage - 1, vm.pageSize)
                 .then(function (data) {
-                    $scope.totalRecords = data.totalRecords;
-                    $scope.customers = data.results;
+                    vm.totalRecords = data.totalRecords;
+                    vm.customers = data.results;
                     filterCustomersProducts('');
                 }, function (error) {
                     $window.alert(error.message);

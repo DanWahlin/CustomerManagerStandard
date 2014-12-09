@@ -9,28 +9,34 @@
         $routeProvider
             .when('/customers', {
                 controller: 'CustomersController',
-                templateUrl: viewBase + 'customers/customers.html'
+                templateUrl: viewBase + 'customers/customers.html',
+                controllerAs: 'vm'
             })
             .when('/customerorders/:customerId', {
                 controller: 'CustomerOrdersController',
-                templateUrl: viewBase + 'customers/customerOrders.html'
+                templateUrl: viewBase + 'customers/customerOrders.html',
+                controllerAs: 'vm'
             })
             .when('/customeredit/:customerId', {
                 controller: 'CustomerEditController',
                 templateUrl: viewBase + 'customers/customerEdit.html',
+                controllerAs: 'vm',
                 secure: true //This route requires an authenticated user
             })
             .when('/orders', {
                 controller: 'OrdersController',
-                templateUrl: viewBase + 'orders/orders.html'
+                templateUrl: viewBase + 'orders/orders.html',
+                controllerAs: 'vm'
             })
             .when('/about', {
                 controller: 'AboutController',
-                templateUrl: viewBase + 'about.html'
+                templateUrl: viewBase + 'about.html',
+                controllerAs: 'vm'
             })
             .when('/login/:redirect*?', {
                 controller: 'LoginController',
-                templateUrl: viewBase + 'login.html'
+                templateUrl: viewBase + 'login.html',
+                controllerAs: 'vm'
             })
             .otherwise({ redirectTo: '/customers' });
 
