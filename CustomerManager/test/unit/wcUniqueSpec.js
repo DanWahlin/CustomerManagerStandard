@@ -31,7 +31,7 @@
             passPromise = true;
 
             customerSvcMock = customersService;
-            spyOn(customerSvcMock, "checkUniqueValue").andCallFake(function (id, property, value) {
+            spyOn(customerSvcMock, "checkUniqueValue").and.callFake(function (id, property, value) {
                 if (passPromise) {
                     if (value === "someone@gmail.com") {
                         return $q.when(true);

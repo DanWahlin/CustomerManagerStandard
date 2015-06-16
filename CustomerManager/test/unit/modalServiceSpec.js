@@ -10,7 +10,7 @@
         _modalService = modalService;
 
         _modal = $modal;
-        spyOn($modal, "open").andReturn(modalResult);
+        spyOn($modal, "open").and.returnValue(modalResult);
 
         modalOptions = {
             actionButtonText: 'Proceed',
@@ -21,7 +21,7 @@
 
     describe('showModal specs', function () {
         beforeEach(function () {
-            spyOn(_modalService, "show").andCallThrough();
+            spyOn(_modalService, "show").and.callThrough();
         });
 
         it('should call the show function', function () {
