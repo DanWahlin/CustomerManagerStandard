@@ -36,7 +36,7 @@ A related example that ties into Azure Active Directory Services and Office 365/
 
 ## Requirements:
 
-###If you're using Visual Studio and .NET:
+### If you're using Visual Studio and .NET:
 
 The following is required to support the backend services:
 
@@ -48,7 +48,7 @@ To get started, double-click the CustomerManager.sln file located at the root of
 
 Note: If you want to use Visual Studio 2013 that should work although you may have to change the connection string in web.config from "MSSqlLocalDB" to "v11.0" depending upon which version of LocalDB you have installed.
 
-###If you're using Node.js/Express/MongoDB
+### If you're using Node.js/Express/MongoDB
 
 If you don't already have Node.js on your machine install it from http://nodejs.org. You'll also need to install MongoDB from http://www.mongodb.org if you don't have it already and get it configured and running using the instructions on their site.
 
@@ -97,4 +97,4 @@ There are several ways to execute these tests:
 * Using Visual Studio extensions like [ReSharper](http://www.jetbrains.com/resharper/) or [TestDriven.net](http://www.testdriven.net/).
 * Using the command line or GUI provided by the [NUnit.Runners](https://www.nuget.org/packages/NUnit.Runners) NuGet package.
 
-Thanks to [Bruno Baia](https://github.com/bbaia) for the contribution!
+Thanks to [Bruno Baia](https://github.com/bbaia) for the contribution
