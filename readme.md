@@ -1,4 +1,4 @@
-﻿Customer Manager with AngularJS
+Customer Manager with AngularJS
 ===============
 
 If you’re new to AngularJS check out my [AngularJS in 60-ish Minutes](http://weblogs.asp.net/dwahlin/archive/2013/04/12/video-tutorial-angularjs-fundamentals-in-60-ish-minutes.aspx) video tutorial or download the [free eBook](http://weblogs.asp.net/dwahlin/archive/2013/07/30/angularjs-in-60-ish-minutes-the-ebook.aspx). Also check out [The AngularJS Magazine](http://flip.it/bdyUX) for up-to-date information on using AngularJS to build Single Page Applications (SPAs).
@@ -40,7 +40,7 @@ A related example that ties into Azure Active Directory Services and Office 365/
 
 The following is required to support the backend services:
 
-* Visual Studio 2015 Community (free version) - https://www.visualstudio.com
+* Visual Studio 2015 Community (free version) - https://www.visualstudio.com/?WT.mc_id=m365-0000-dwahlin
 
 * ASP.NET MVC and Web API are used for the back-end services along with Entity Framework for database access (included if you have VS 2015 community installed with the LocalDB option selected)
 
