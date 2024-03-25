@@ -3,7 +3,7 @@
   "author": "Dan Wahlin",
   "version": "1.0.0",
   "dependencies": {
-    "express": "4.13.3",
+    "express": "4.19.2",
     "jade": ">=1.11.0",
     "mongoose": ">=4.3.5",
     "cookie-parser": "^1.4.1",
